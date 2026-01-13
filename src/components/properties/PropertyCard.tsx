@@ -24,7 +24,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
   return (
     <Link 
       href={`/properties/${property.id}`}
-      className="group block bg-white border border-sovereign-gray-100 card-hover"
+      className="group block card-glass overflow-hidden"
     >
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
@@ -32,31 +32,33 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           src={property.image}
           alt={property.title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover transition-all duration-700 group-hover:scale-110"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-sovereign-black via-transparent to-transparent opacity-60" />
+        
         {property.goldenVisa && (
-          <div className="absolute top-4 left-4 flex items-center gap-2 bg-sovereign-gold px-3 py-1.5">
+          <div className="absolute top-4 left-4 flex items-center gap-2 bg-sovereign-gold/90 backdrop-blur-sm px-3 py-2">
             <Shield className="h-3.5 w-3.5 text-sovereign-black" />
             <span className="text-xs font-sans font-medium text-sovereign-black uppercase tracking-wider">
               Golden Visa
             </span>
           </div>
         )}
-        <div className="absolute top-4 right-4 bg-sovereign-charcoal/90 px-3 py-1.5">
-          <span className="text-xs font-sans text-sovereign-white uppercase tracking-wider">
+        <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-xl border border-white/20 px-3 py-2">
+          <span className="text-xs font-sans text-white uppercase tracking-wider">
             {property.type}
           </span>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <div className="flex items-center gap-2 text-sovereign-gray-500 text-xs mb-2">
-          <MapPin className="h-3.5 w-3.5" />
+      <div className="p-6 bg-gradient-to-b from-white/5 to-transparent">
+        <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
+          <MapPin className="h-3.5 w-3.5 text-sovereign-gold" />
           <span>{property.location}</span>
         </div>
         
-        <h3 className="font-serif text-xl text-sovereign-charcoal mb-3 group-hover:text-sovereign-gold transition-colors">
+        <h3 className="font-serif text-xl text-white mb-3 group-hover:text-sovereign-gold transition-colors duration-300">
           {property.title}
         </h3>
         
@@ -64,17 +66,17 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           {formatAED(property.price)}
         </p>
 
-        <div className="flex items-center gap-6 pt-4 border-t border-sovereign-gray-100">
-          <div className="flex items-center gap-2 text-sovereign-gray-600">
-            <Bed className="h-4 w-4" />
+        <div className="flex items-center gap-6 pt-4 border-t border-white/10">
+          <div className="flex items-center gap-2 text-white/60">
+            <Bed className="h-4 w-4 text-sovereign-gold/70" />
             <span className="text-sm">{property.bedrooms}</span>
           </div>
-          <div className="flex items-center gap-2 text-sovereign-gray-600">
-            <Bath className="h-4 w-4" />
+          <div className="flex items-center gap-2 text-white/60">
+            <Bath className="h-4 w-4 text-sovereign-gold/70" />
             <span className="text-sm">{property.bathrooms}</span>
           </div>
-          <div className="flex items-center gap-2 text-sovereign-gray-600">
-            <Square className="h-4 w-4" />
+          <div className="flex items-center gap-2 text-white/60">
+            <Square className="h-4 w-4 text-sovereign-gold/70" />
             <span className="text-sm">{property.area.toLocaleString()} sqft</span>
           </div>
         </div>

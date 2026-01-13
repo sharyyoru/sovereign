@@ -25,23 +25,24 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-sovereign-charcoal text-sovereign-gray-300">
+    <footer className="bg-gradient-to-b from-sovereign-black to-sovereign-charcoal text-white/70 relative overflow-hidden">
+      {/* Background glow effect */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-sovereign-gold/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-sovereign-gold/5 rounded-full blur-3xl" />
+      
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-6 py-16 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-6 py-20 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-6">
+            <Link href="/" className="inline-block mb-8 group">
               <Image
-                src="/logos/LOGO-02.png"
+                src="/logos/LOGO-01.png"
                 alt="Sovereign Capital"
-                width={50}
-                height={50}
-                className="h-12 w-auto"
+                width={200}
+                height={200}
+                className="h-20 w-auto transition-all duration-500 group-hover:scale-105 invert"
               />
-              <span className="text-sovereign-gold font-serif text-xl tracking-wide">
-                SOVEREIGN CAPITAL
-              </span>
             </Link>
             <p className="text-sm leading-relaxed mb-6 max-w-sm">
               Premier real estate advisory for sophisticated investors seeking 
@@ -108,17 +109,17 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-sovereign-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-6 lg:px-8">
+      <div className="relative border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-8 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-sovereign-gray-500">
+            <p className="text-xs text-white/40">
               © {new Date().getFullYear()} Sovereign Capital. All rights reserved.
             </p>
-            <div className="flex items-center gap-6">
-              <Link href="/privacy" className="text-xs text-sovereign-gray-500 hover:text-sovereign-gold transition-colors">
+            <div className="flex items-center gap-8">
+              <Link href="/privacy" className="text-xs text-white/40 hover:text-sovereign-gold transition-all duration-300">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-xs text-sovereign-gray-500 hover:text-sovereign-gold transition-colors">
+              <Link href="/terms" className="text-xs text-white/40 hover:text-sovereign-gold transition-all duration-300">
                 Terms of Service
               </Link>
             </div>
