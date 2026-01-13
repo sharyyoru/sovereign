@@ -25,13 +25,13 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-sovereign-black to-sovereign-charcoal text-white/70 relative overflow-hidden">
+    <footer className="bg-sovereign-charcoal text-white/70 relative overflow-hidden">
       {/* Background glow effect */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-sovereign-gold/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-sovereign-gold/5 rounded-full blur-3xl" />
       
       {/* Main Footer */}
-      <div className="relative max-w-7xl mx-auto px-6 py-20 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-6 py-16 lg:py-24 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
@@ -39,9 +39,9 @@ export default function Footer() {
               <Image
                 src="/logos/LOGO-01.png"
                 alt="Sovereign Capital"
-                width={200}
-                height={200}
-                className="h-20 w-auto transition-all duration-500 group-hover:scale-105 invert"
+                width={400}
+                height={400}
+                className="h-24 md:h-32 lg:h-40 w-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
               />
             </Link>
             <p className="text-sm leading-relaxed mb-6 max-w-sm">

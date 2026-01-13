@@ -1,423 +1,254 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Building2, TrendingUp, MapPin, Shield, FileText, Calculator } from 'lucide-react'
-import PropertyCard from '@/components/properties/PropertyCard'
-import ROICalculatorPreview from '@/components/calculator/ROICalculatorPreview'
-
-const featuredProperties = [
-  {
-    id: '1',
-    title: 'Al Reem Island Penthouse',
-    location: 'Al Reem Island, Abu Dhabi',
-    price: 8500000,
-    bedrooms: 4,
-    bathrooms: 5,
-    area: 5200,
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-    type: 'Penthouse',
-    goldenVisa: true,
-  },
-  {
-    id: '2',
-    title: 'Saadiyat Beach Villa',
-    location: 'Saadiyat Island, Abu Dhabi',
-    price: 15000000,
-    bedrooms: 6,
-    bathrooms: 7,
-    area: 8500,
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
-    type: 'Villa',
-    goldenVisa: true,
-  },
-  {
-    id: '3',
-    title: 'Yas Bay Residence',
-    location: 'Yas Island, Abu Dhabi',
-    price: 3200000,
-    bedrooms: 3,
-    bathrooms: 4,
-    area: 2800,
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-    type: 'Apartment',
-    goldenVisa: true,
-  },
-]
-
-const valuePropositions = [
-  {
-    icon: Shield,
-    title: 'Advice-First Approach',
-    description: 'We prioritize understanding your investment goals before presenting options. No pressure, only informed decisions.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Yield Intelligence',
-    description: 'Access proprietary market data and yield analysis specific to Abu Dhabi\'s diverse property landscape.',
-  },
-  {
-    icon: MapPin,
-    title: 'Domain Expertise',
-    description: 'Deep knowledge of Abu Dhabi\'s emerging luxury zones, from Saadiyat to Al Reem to Yas Island.',
-  },
-]
-
-const insights = [
-  {
-    title: 'Abu Dhabi 2030 Economic Vision',
-    category: 'Market Intelligence',
-    excerpt: 'Understanding how the emirate\'s strategic plan impacts property values and investment opportunities.',
-    href: '/intelligence/abu-dhabi-2030',
-  },
-  {
-    title: 'Golden Visa Investment Guide',
-    category: 'Investment Guide',
-    excerpt: 'Complete analysis of the AED 2M threshold and what it means for international investors.',
-    href: '/intelligence/golden-visa-guide',
-  },
-  {
-    title: 'Saadiyat Island: Cultural District',
-    category: 'Area Insight',
-    excerpt: 'How the Louvre effect continues to drive premium valuations in the cultural heart of Abu Dhabi.',
-    href: '/areas/saadiyat-island',
-  },
-]
+import { ArrowRight, Shield, FileText, Calculator } from 'lucide-react'
+import PropertySlider from '@/components/home/PropertySlider'
+import ServiceScroller from '@/components/home/ServiceScroller'
+import CaseStudies from '@/components/home/CaseStudies'
 
 export default function HomePage() {
   return (
     <div className="page-transition">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center bg-sovereign-black overflow-hidden">
-        {/* Abu Dhabi Image - Sheikh Zayed Grand Mosque */}
+      {/* Hero Section - G42 Style with Abu Dhabi Skyline */}
+      <section className="relative min-h-screen flex items-center bg-[#e8e4df] overflow-hidden">
+        {/* Abu Dhabi Skyline Video/Image */}
         <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80"
-            alt="Abu Dhabi Architecture"
-            fill
-            className="object-cover opacity-40"
-            priority
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-30"
+            poster="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80"
+          >
+            <source src="https://videos.pexels.com/video-files/3694383/3694383-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+          </video>
         </div>
         
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-sovereign-black via-transparent to-sovereign-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-sovereign-black/90 via-sovereign-black/50 to-transparent" />
+        {/* Decorative Elements - G42 Style */}
+        <div className="absolute top-32 left-20 w-16 h-16 bg-sovereign-gold rounded-full opacity-80 animate-float hidden md:block" />
+        <div className="absolute top-40 right-1/4 w-8 h-8 bg-sovereign-charcoal rounded-full hidden md:block" />
+        <div className="absolute bottom-40 left-1/3 w-12 h-12 border-2 border-sovereign-gold rotate-45 hidden md:block" />
+        <div className="absolute top-1/3 right-20 w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[30px] border-b-sovereign-gold animate-pulse-slow hidden md:block" />
         
-        {/* Animated background elements */}
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-sovereign-gold/10 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-sovereign-gold/5 rounded-full blur-3xl animate-float" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 pt-40">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-3 mb-8 animate-fade-in">
-              <div className="w-12 h-px bg-sovereign-gold" />
-              <p className="text-sovereign-gold font-sans text-sm uppercase tracking-[0.4em]">
-                Abu Dhabi Real Estate Advisory
-              </p>
-            </div>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.1] mb-8 animate-slide-up">
-              Decisions Driven by{' '}
-              <span className="gradient-text">Understanding</span>
-            </h1>
-            <p className="text-white/70 text-xl md:text-2xl leading-relaxed mb-12 max-w-2xl animate-slide-up animate-delay-100">
-              Premier advisory for sophisticated investors seeking Abu Dhabi properties. 
-              Strategy-led guidance, not sales pressure.
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32 pt-48">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className="text-sovereign-charcoal/60 font-sans text-lg md:text-xl mb-6 animate-fade-in">
+              Premier real estate advisory in Abu Dhabi
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 animate-slide-up animate-delay-200">
-              <Link href="/properties" className="btn-primary group">
-                Explore Properties
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link href="/calculator" className="btn-glass">
-                Calculate ROI
-              </Link>
-            </div>
-            
-            {/* Stats bar */}
-            <div className="mt-20 grid grid-cols-3 gap-8 max-w-2xl animate-slide-up animate-delay-300">
-              <div className="glass-gold p-6 text-center">
-                <p className="text-3xl font-serif text-sovereign-gold mb-1">AED 2B+</p>
-                <p className="text-xs text-white/50 uppercase tracking-wider">Transactions Advised</p>
-              </div>
-              <div className="glass-gold p-6 text-center">
-                <p className="text-3xl font-serif text-sovereign-gold mb-1">200+</p>
-                <p className="text-xs text-white/50 uppercase tracking-wider">Golden Visas Secured</p>
-              </div>
-              <div className="glass-gold p-6 text-center">
-                <p className="text-3xl font-serif text-sovereign-gold mb-1">7.2%</p>
-                <p className="text-xs text-white/50 uppercase tracking-wider">Avg. Rental Yield</p>
-              </div>
-            </div>
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-sovereign-charcoal leading-[0.95] mb-12 animate-slide-up font-bold tracking-tight">
+              TO ENABLE<br />
+              <span className="text-sovereign-gold">INTELLIGENT</span><br />
+              INVESTMENTS
+            </h1>
           </div>
         </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
           <div className="flex flex-col items-center gap-2 animate-bounce">
-            <span className="text-white/40 text-xs uppercase tracking-widest">Scroll</span>
-            <div className="w-px h-12 bg-gradient-to-b from-sovereign-gold to-transparent" />
+            <div className="w-10 h-10 rounded-full border-2 border-sovereign-charcoal/30 flex items-center justify-center">
+              <div className="w-1 h-4 bg-sovereign-charcoal/50 rounded-full" />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Value Propositions */}
-      <section className="section-padding bg-sovereign-black relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sovereign-charcoal via-sovereign-black to-sovereign-black" />
-        
-        <div className="relative max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-12 h-px bg-sovereign-gold/50" />
-              <p className="text-sovereign-gold font-sans text-sm uppercase tracking-[0.4em]">
-                Our Philosophy
-              </p>
-              <div className="w-12 h-px bg-sovereign-gold/50" />
-            </div>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-6">
-              Calm. Confident. <span className="gradient-text">Considered.</span>
-            </h2>
-            <p className="text-white/60 max-w-2xl mx-auto text-lg">
-              In a market often dominated by hype, we offer measured counsel 
-              grounded in deep market understanding.
-            </p>
-          </div>
+      {/* Property Slider - G42 News Style */}
+      <PropertySlider />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-            {valuePropositions.map((prop, index) => (
-              <div 
-                key={prop.title}
-                className="group text-center p-10 card-glass relative overflow-hidden"
-              >
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-b from-sovereign-gold/0 via-sovereign-gold/5 to-sovereign-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                
-                <div className="relative">
-                  <div className="inline-flex items-center justify-center w-20 h-20 glass-gold mb-8 group-hover:scale-110 transition-transform duration-500">
-                    <prop.icon className="h-8 w-8 text-sovereign-gold" />
-                  </div>
-                  <h3 className="font-serif text-2xl text-white mb-4 group-hover:text-sovereign-gold transition-colors duration-300">
-                    {prop.title}
-                  </h3>
-                  <p className="text-white/60 leading-relaxed">
-                    {prop.description}
+      {/* About Section - G42 Style */}
+      <section className="py-20 lg:py-32 bg-[#f5f3ef]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left Column - About Text */}
+            <div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-sovereign-charcoal mb-12 uppercase tracking-wide">
+                About Sovereign
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <p className="text-sovereign-charcoal/70 leading-relaxed mb-6">
+                    We&apos;re Sovereign Capital — born in Abu Dhabi, building portfolios globally, and pushing real estate advisory to do more for everyone.
+                  </p>
+                  <p className="text-sovereign-charcoal/70 leading-relaxed">
+                    We see strategic investment as a force for good. A partner to wealth creation. A tool to make lives more secure, journeys safer, and the future more connected.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sovereign-charcoal/70 leading-relaxed mb-6">
+                    From securing Golden Visas to exploring premium properties, we&apos;re not waiting for tomorrow. We&apos;re creating it — with partners, with purpose, and with people in mind.
+                  </p>
+                  <p className="text-sovereign-charcoal/70 leading-relaxed">
+                    At Sovereign, progress is personal. And every day is a chance to invest better.
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Properties */}
-      <section className="section-padding bg-gradient-to-b from-sovereign-black to-sovereign-charcoal relative overflow-hidden">
-        {/* Background glow */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-sovereign-gold/5 rounded-full blur-3xl" />
-        
-        <div className="relative max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
-            <div>
-              <div className="inline-flex items-center gap-3 mb-4">
-                <div className="w-8 h-px bg-sovereign-gold" />
-                <p className="text-sovereign-gold font-sans text-sm uppercase tracking-[0.4em]">
-                  Curated Selection
-                </p>
-              </div>
-              <h2 className="font-serif text-4xl md:text-5xl text-white">
-                Featured Properties
-              </h2>
-            </div>
-            <Link 
-              href="/properties" 
-              className="mt-6 md:mt-0 inline-flex items-center text-sovereign-gold font-sans text-sm uppercase tracking-widest hover:text-white transition-colors group"
-            >
-              View All Properties
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProperties.map((property) => (
-              <PropertyCard key={property.id} property={property} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ROI Calculator Preview */}
-      <section className="section-padding bg-sovereign-black relative overflow-hidden">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sovereign-gold/5 rounded-full blur-3xl animate-pulse-slow" />
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <div className="inline-flex items-center gap-3 mb-6">
-                <div className="w-8 h-px bg-sovereign-gold" />
-                <p className="text-sovereign-gold font-sans text-sm uppercase tracking-[0.4em]">
-                  Investment Intelligence
-                </p>
-              </div>
-              <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
-                Yield & ROI <span className="gradient-text">Calculator</span>
-              </h2>
-              <p className="text-white/60 mb-10 leading-relaxed text-lg">
-                Our high-precision calculator helps you understand potential returns 
-                based on Abu Dhabi&apos;s specific market dynamics.
-              </p>
-              <div className="space-y-4 mb-10">
-                <div className="flex items-center gap-4 glass p-4">
-                  <div className="w-3 h-3 bg-sovereign-gold rounded-full" />
-                  <span className="text-white/80">Golden Visa AED 2M threshold analysis</span>
-                </div>
-                <div className="flex items-center gap-4 glass p-4">
-                  <div className="w-3 h-3 bg-sovereign-gold rounded-full" />
-                  <span className="text-white/80">Area-specific rental yield data</span>
-                </div>
-                <div className="flex items-center gap-4 glass p-4">
-                  <div className="w-3 h-3 bg-sovereign-gold rounded-full" />
-                  <span className="text-white/80">5-year appreciation projections</span>
-                </div>
-              </div>
-              <Link href="/calculator" className="btn-primary group">
-                <Calculator className="mr-2 h-4 w-4" />
-                Open Calculator
-                <ArrowRight className="ml-2 h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-              </Link>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-sovereign-gold/10 blur-3xl rounded-full" />
-              <div className="relative">
-                <ROICalculatorPreview />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Intelligence Hub */}
-      <section className="section-padding bg-gradient-to-b from-sovereign-charcoal to-sovereign-black relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-sovereign-gold/5 rounded-full blur-3xl" />
-        
-        <div className="relative max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
-            <div>
-              <div className="inline-flex items-center gap-3 mb-4">
-                <div className="w-8 h-px bg-sovereign-gold" />
-                <p className="text-sovereign-gold font-sans text-sm uppercase tracking-[0.4em]">
-                  Market Intelligence
-                </p>
-              </div>
-              <h2 className="font-serif text-4xl md:text-5xl text-white">
-                Insights & Analysis
-              </h2>
-            </div>
-            <Link 
-              href="/intelligence" 
-              className="mt-6 md:mt-0 inline-flex items-center text-sovereign-gold font-sans text-sm uppercase tracking-widest hover:text-white transition-colors group"
-            >
-              View All Insights
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {insights.map((insight) => (
               <Link 
-                key={insight.title}
-                href={insight.href}
-                className="group card-glass p-8 relative overflow-hidden"
+                href="/about"
+                className="inline-flex items-center gap-2 bg-sovereign-gold text-sovereign-black px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-sovereign-charcoal hover:text-white transition-colors mt-8"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-sovereign-gold/0 to-sovereign-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative">
-                  <p className="text-sovereign-gold font-sans text-xs uppercase tracking-widest mb-4">
-                    {insight.category}
-                  </p>
-                  <h3 className="font-serif text-xl text-white mb-4 group-hover:text-sovereign-gold transition-colors duration-300">
-                    {insight.title}
-                  </h3>
-                  <p className="text-white/50 text-sm leading-relaxed mb-6">
-                    {insight.excerpt}
-                  </p>
-                  <span className="inline-flex items-center text-sovereign-gold font-sans text-xs uppercase tracking-widest">
-                    Read More
-                    <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-2 transition-transform duration-300" />
-                  </span>
-                </div>
+                About Us
+                <ArrowRight className="w-4 h-4" />
               </Link>
-            ))}
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="relative">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80"
+                  alt="Abu Dhabi Skyline"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </div>
+
+          {/* Stats */}
+          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <p className="text-5xl md:text-6xl font-serif text-sovereign-charcoal mb-2">AED 2B+</p>
+              <p className="text-sovereign-charcoal/50 uppercase text-sm tracking-wider">Transactions Advised</p>
+            </div>
+            <div>
+              <p className="text-5xl md:text-6xl font-serif text-sovereign-charcoal mb-2">200+</p>
+              <p className="text-sovereign-charcoal/50 uppercase text-sm tracking-wider">Golden Visas Secured</p>
+            </div>
+            <div>
+              <p className="text-5xl md:text-6xl font-serif text-sovereign-charcoal mb-2">7.2%</p>
+              <p className="text-sovereign-charcoal/50 uppercase text-sm tracking-wider">Avg. Rental Yield</p>
+            </div>
+            <div>
+              <p className="text-5xl md:text-6xl font-serif text-sovereign-charcoal mb-2">15+</p>
+              <p className="text-sovereign-charcoal/50 uppercase text-sm tracking-wider">Years Experience</p>
+            </div>
+          </div>
+
+          <p className="mt-12 text-sovereign-charcoal/60 max-w-2xl">
+            Our strength lies in our expertise. Diverse, driven, and deeply skilled — we&apos;re the force powering your investment success.
+          </p>
         </div>
       </section>
+
+      {/* Case Studies Section */}
+      <CaseStudies />
+
+      {/* What We Do - Horizontal Scroller */}
+      <ServiceScroller />
 
       {/* Golden Visa CTA */}
-      <section className="section-padding bg-sovereign-black relative overflow-hidden">
-        {/* Animated background */}
+      <section className="py-20 lg:py-32 bg-sovereign-charcoal relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-sovereign-gold/10 rounded-full blur-3xl animate-pulse-slow" />
         </div>
         
-        <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-24 h-24 glass-gold mb-10 animate-float">
+        <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-sovereign-gold/10 border border-sovereign-gold/30 mb-10 animate-float">
             <Shield className="h-12 w-12 text-sovereign-gold" />
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8">
-            Golden Visa <span className="gradient-text">Qualifying</span> Properties
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8 uppercase tracking-wide">
+            Golden Visa Qualifying Properties
           </h2>
           <p className="text-white/60 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
             Invest AED 2 million or more in Abu Dhabi real estate and secure your 
             10-year UAE Golden Visa. We guide you through every step.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/properties?goldenVisa=true" className="btn-primary group">
+            <Link 
+              href="/properties?goldenVisa=true" 
+              className="inline-flex items-center gap-2 bg-sovereign-gold text-sovereign-black px-8 py-4 text-sm font-medium uppercase tracking-wider hover:bg-white transition-colors"
+            >
               View Qualifying Properties
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/intelligence/golden-visa-guide" className="btn-glass">
+            <Link 
+              href="/intelligence/golden-visa-guide" 
+              className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 text-sm font-medium uppercase tracking-wider hover:bg-white/10 transition-colors"
+            >
               Download Guide
-              <FileText className="ml-2 h-4 w-4" />
+              <FileText className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
+      {/* Calculator Preview */}
+      <section className="py-20 lg:py-32 bg-[#f5f3ef]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-serif text-sovereign-charcoal mb-6 uppercase tracking-wide">
+                Yield & ROI Calculator
+              </h2>
+              <p className="text-sovereign-charcoal/60 mb-10 leading-relaxed text-lg">
+                Our high-precision calculator helps you understand potential returns 
+                based on Abu Dhabi&apos;s specific market dynamics.
+              </p>
+              <div className="space-y-4 mb-10">
+                <div className="flex items-center gap-4 bg-white p-4 border border-sovereign-charcoal/10">
+                  <div className="w-3 h-3 bg-sovereign-gold rounded-full" />
+                  <span className="text-sovereign-charcoal/80">Golden Visa AED 2M threshold analysis</span>
+                </div>
+                <div className="flex items-center gap-4 bg-white p-4 border border-sovereign-charcoal/10">
+                  <div className="w-3 h-3 bg-sovereign-gold rounded-full" />
+                  <span className="text-sovereign-charcoal/80">Area-specific rental yield data</span>
+                </div>
+                <div className="flex items-center gap-4 bg-white p-4 border border-sovereign-charcoal/10">
+                  <div className="w-3 h-3 bg-sovereign-gold rounded-full" />
+                  <span className="text-sovereign-charcoal/80">5-year appreciation projections</span>
+                </div>
+              </div>
+              <Link 
+                href="/calculator" 
+                className="inline-flex items-center gap-2 bg-sovereign-charcoal text-white px-8 py-4 text-sm font-medium uppercase tracking-wider hover:bg-sovereign-gold hover:text-sovereign-black transition-colors"
+              >
+                <Calculator className="w-4 h-4" />
+                Open Calculator
+              </Link>
+            </div>
+            <div className="relative aspect-square bg-sovereign-charcoal p-8 flex items-center justify-center">
+              <div className="text-center">
+                <p className="text-sovereign-gold text-6xl font-serif mb-4">7.2%</p>
+                <p className="text-white/60 uppercase tracking-wider text-sm">Average Yield</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Consultation CTA */}
-      <section className="section-padding bg-gradient-to-b from-sovereign-black to-sovereign-charcoal relative overflow-hidden">
+      <section className="py-20 lg:py-32 bg-sovereign-black relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-sovereign-gold/5 rounded-full blur-3xl" />
         
-        <div className="relative max-w-7xl mx-auto">
-          <div className="glass p-10 md:p-16 lg:p-20 glow">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-flex items-center gap-3 mb-6">
-                  <div className="w-8 h-px bg-sovereign-gold" />
-                  <p className="text-sovereign-gold font-sans text-sm uppercase tracking-[0.4em]">
-                    Get Started
-                  </p>
-                </div>
-                <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
-                  Begin Your Investment Journey
-                </h2>
-                <p className="text-white/60 mb-10 leading-relaxed text-lg">
-                  Schedule a private consultation with our advisory team. We&apos;ll discuss 
-                  your investment objectives and help you navigate Abu Dhabi&apos;s 
-                  dynamic property market with clarity.
-                </p>
-                <Link href="/enquire" className="btn-primary group">
-                  Schedule Consultation
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-              <div className="hidden lg:block">
-                <div className="aspect-square relative glass overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
-                    alt="Advisory consultation"
-                    fill
-                    className="object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700"
-                  />
-                </div>
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-sovereign-gold text-sm uppercase tracking-widest mb-4">Get Started</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-white mb-6 uppercase tracking-wide">
+                Begin Your Investment Journey
+              </h2>
+              <p className="text-white/60 mb-10 leading-relaxed text-lg">
+                Schedule a private consultation with our advisory team. We&apos;ll discuss 
+                your investment objectives and help you navigate Abu Dhabi&apos;s 
+                dynamic property market with clarity.
+              </p>
+              <Link 
+                href="/enquire" 
+                className="inline-flex items-center gap-2 bg-sovereign-gold text-sovereign-black px-8 py-4 text-sm font-medium uppercase tracking-wider hover:bg-white transition-colors"
+              >
+                Schedule Consultation
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="hidden lg:block">
+              <div className="aspect-square relative overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
+                  alt="Advisory consultation"
+                  fill
+                  className="object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700"
+                />
               </div>
             </div>
           </div>
