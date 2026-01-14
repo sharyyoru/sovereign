@@ -68,10 +68,10 @@ export default function PropertySlider() {
   }
 
   return (
-    <section className="py-12 overflow-visible">
-      {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-8">
-        <div className="flex items-center justify-between">
+    <section className="py-12 w-screen overflow-visible -ml-[5%] md:-ml-[20%] lg:-ml-[40%]" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)' }}>
+      {/* Header - Asymmetric positioning */}
+      <div className="ml-[5%] md:ml-[20%] lg:ml-[40%] pr-6 lg:pr-8 mb-8">
+        <div className="flex items-center justify-between max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-serif text-white font-bold">Abu Dhabi&apos;s Top Projects</h2>
           <div className="flex items-center gap-4">
             <button 
@@ -90,11 +90,11 @@ export default function PropertySlider() {
         </div>
       </div>
 
-      {/* Slider - Full width scroll like G42 */}
+      {/* Slider - Full screen width scroll */}
       <div 
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scrollbar-hide pl-6 lg:pl-8 pb-4 snap-x snap-mandatory"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'smooth' }}
+        className="flex gap-6 overflow-x-auto scrollbar-hide pb-4"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'smooth', paddingLeft: '40%' }}
       >
         {properties.map((property, index) => (
           <Link

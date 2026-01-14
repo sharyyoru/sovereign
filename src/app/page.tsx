@@ -4,6 +4,7 @@ import { ArrowRight, Shield, FileText, Calculator } from 'lucide-react'
 import PropertySlider from '@/components/home/PropertySlider'
 import ServiceScroller from '@/components/home/ServiceScroller'
 import CaseStudies from '@/components/home/CaseStudies'
+import AnimatedHeroText from '@/components/home/AnimatedHeroText'
 
 export default function HomePage() {
   return (
@@ -27,21 +28,9 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-sovereign-gold/10 via-transparent to-sovereign-gold/10 z-10" />
         
         {/* Animated Header Text - Positioned Higher */}
-        <div className="absolute inset-0 flex items-start justify-center z-20 px-6 pt-[20vh] md:pt-[25vh]">
+        <div className="absolute inset-0 flex items-start justify-center z-20 px-6 pt-[15vh] md:pt-[20vh]">
           <div className="text-center max-w-5xl">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white leading-tight">
-              <span className="inline-block animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                Unleash your full Investment Potential
-              </span>
-              <br />
-              <span className="inline-block animate-slide-up" style={{ animationDelay: '0.3s' }}>
-                with <span className="text-sovereign-gold animate-pulse-slow">Premium Investments</span>
-              </span>
-              <br />
-              <span className="inline-block animate-slide-up" style={{ animationDelay: '0.5s' }}>
-                in Abu Dhabi
-              </span>
-            </h1>
+            <AnimatedHeroText />
           </div>
         </div>
         
@@ -55,8 +44,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Property Slider - G42 News Style - Positioned at 60% from top, asymmetric layout */}
-      <div className="relative -mt-[40vh] z-20 ml-[5%] md:ml-[20%] lg:ml-[40%]">
+      {/* Property Slider - G42 News Style - Positioned at 60% from top, full width */}
+      <div className="relative -mt-[40vh] z-20 w-full">
         <PropertySlider />
       </div>
 
