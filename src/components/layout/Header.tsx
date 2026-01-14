@@ -82,7 +82,7 @@ export default function Header() {
           <div className="absolute inset-0 h-32 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/40 to-transparent pointer-events-none" />
         )}
 
-        <div className="relative flex items-center justify-between px-6 md:px-8 py-4 md:py-5">
+        <div className="relative flex items-center justify-between px-4 md:px-6 py-2 md:py-3">
           {/* Logo - Fixed width 300px */}
           <Link href="/" className="block group flex-shrink-0">
             <img
@@ -151,8 +151,15 @@ export default function Header() {
             menuOpen ? "opacity-100" : "opacity-0"
           )}
         >
-          {/* Close Button */}
-          <div className="flex justify-end">
+          {/* Top Row - Logo and Close Button */}
+          <div className="flex items-center justify-between">
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              <img
+                src="/logos/LOGO-01.png"
+                alt="Sovereign Capital"
+                className="w-[300px] md:w-[350px] lg:w-[400px] h-auto brightness-0 invert"
+              />
+            </Link>
             <button
               onClick={() => setMenuOpen(false)}
               className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors"

@@ -35,13 +35,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-8 group">
-              <Image
+            <Link href="/" className="inline-block mb-6 group">
+              <img
                 src="/logos/LOGO-01.png"
                 alt="Sovereign Capital"
-                width={400}
-                height={400}
-                className="h-24 md:h-32 lg:h-40 w-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
+                className="w-[250px] md:w-[280px] lg:w-[300px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
               />
             </Link>
             <p className="text-sm leading-relaxed mb-6 max-w-sm">
