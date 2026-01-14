@@ -96,7 +96,7 @@ export default function Header() {
           </Link>
 
           {/* Center Section - Search Bar + Menu Links */}
-          <div className="flex-1 flex items-center justify-center gap-2 md:gap-6 px-2 md:px-4">
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-6">
             {/* Search Bar */}
             <form onSubmit={handleSearch} className="relative w-full max-w-[240px] md:max-w-xs lg:max-w-sm">
               <div className="relative">
