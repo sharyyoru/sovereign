@@ -8,6 +8,9 @@ import { cn } from '@/lib/utils'
 import { usePathname, useRouter } from 'next/navigation'
 
 const navigation = [
+  { name: 'Offplan', href: '/properties?type=offplan' },
+  { name: 'Residential', href: '/properties?type=residential' },
+  { name: 'Industrial', href: '/properties?type=industrial' },
   { name: 'Properties', href: '/properties' },
   { name: 'Intelligence', href: '/intelligence' },
   { name: 'Calculator', href: '/calculator' },
@@ -77,9 +80,9 @@ export default function Header() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled ? "bg-sovereign-green/95 backdrop-blur-xl shadow-2xl" : ""
       )}>
-        {/* Gradient overlay for header area - only when not scrolled */}
+        {/* Darker gradient overlay for header area - better logo visibility */}
         {!scrolled && (
-          <div className="absolute inset-0 h-32 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 h-40 bg-gradient-to-b from-sovereign-black/70 via-sovereign-green/50 to-transparent pointer-events-none" />
         )}
 
         <div className="relative flex items-center justify-between px-3 md:px-6 py-2 md:py-3 gap-2 md:gap-4">
@@ -92,9 +95,10 @@ export default function Header() {
             />
           </Link>
 
-          {/* Dynamic Search Bar - Full width, centered */}
-          <div className="flex-1 flex justify-center px-2 md:px-4">
-            <form onSubmit={handleSearch} className="relative w-full max-w-[200px] md:max-w-xs lg:max-w-md">
+          {/* Center Section - Search Bar + Menu Links */}
+          <div className="flex-1 flex items-center justify-center gap-2 md:gap-6 px-2 md:px-4">
+            {/* Search Bar */}
+            <form onSubmit={handleSearch} className="relative w-full max-w-[240px] md:max-w-xs lg:max-w-sm">
               <div className="relative">
                 <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 text-sovereign-gold" />
                 <input
@@ -114,6 +118,19 @@ export default function Header() {
                 )}
               </div>
             </form>
+            
+            {/* Menu Links - Hidden on mobile */}
+            <div className="hidden lg:flex items-center gap-6">
+              <Link href="/properties?type=offplan" className="text-white font-bold text-sm uppercase tracking-wider hover:text-sovereign-gold transition-colors">
+                Offplan
+              </Link>
+              <Link href="/properties?type=residential" className="text-white font-bold text-sm uppercase tracking-wider hover:text-sovereign-gold transition-colors">
+                Residential
+              </Link>
+              <Link href="/properties?type=industrial" className="text-white font-bold text-sm uppercase tracking-wider hover:text-sovereign-gold transition-colors">
+                Industrial
+              </Link>
+            </div>
           </div>
 
           {/* Menu Button */}

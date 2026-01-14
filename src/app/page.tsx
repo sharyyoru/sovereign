@@ -133,28 +133,44 @@ export default function HomePage() {
               Real Estate Developer Partners
             </p>
             <div className="relative overflow-hidden">
-              <div className="flex animate-scroll-x gap-12 md:gap-16 items-center">
-                {/* First set of partner names */}
-                <div className="flex gap-12 md:gap-16 items-center flex-shrink-0">
+              <div className="flex animate-scroll-x gap-8 md:gap-12 items-center">
+                {/* First set of partner names with separators */}
+                <div className="flex gap-8 md:gap-12 items-center flex-shrink-0">
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">ALDAR</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">EMAAR</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">DAMAC</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">NAKHEEL</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">MERAAS</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">SOBHA</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">BLOOM</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">REPORTAGE</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                 </div>
                 {/* Duplicate set for seamless loop */}
-                <div className="flex gap-12 md:gap-16 items-center flex-shrink-0">
+                <div className="flex gap-8 md:gap-12 items-center flex-shrink-0">
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">ALDAR</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">EMAAR</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">DAMAC</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">NAKHEEL</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">MERAAS</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">SOBHA</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">BLOOM</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                   <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">REPORTAGE</span>
+                  <span className="w-px h-6 bg-sovereign-charcoal/20" />
                 </div>
               </div>
             </div>
