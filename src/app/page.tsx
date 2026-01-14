@@ -36,8 +36,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Property Slider - G42 News Style */}
-      <PropertySlider />
+      {/* Property Slider - G42 News Style - Overlapping with hero */}
+      <div className="relative -mt-32 z-20">
+        <PropertySlider />
+      </div>
 
       {/* About Section - G42 Style */}
       <section className="py-20 lg:py-32 bg-[#f5f3ef]">
@@ -75,14 +77,15 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Right Column - Image */}
+            {/* Right Column - YouTube Video */}
             <div className="relative">
-              <div className="aspect-[4/3] relative overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1578681041175-9717c638e1d4?w=800&q=80"
-                  alt="Abu Dhabi Skyline"
-                  fill
-                  className="object-cover"
+              <div className="aspect-video relative overflow-hidden rounded-lg shadow-xl">
+                <iframe
+                  src="https://www.youtube.com/embed/cqcHd1CVMgw?autoplay=0&mute=1&loop=1&playlist=cqcHd1CVMgw&controls=1&modestbranding=1&rel=0"
+                  title="About Sovereign Capital"
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                 />
               </div>
             </div>
