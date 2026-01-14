@@ -82,31 +82,31 @@ export default function Header() {
           <div className="absolute inset-0 h-32 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/40 to-transparent pointer-events-none" />
         )}
 
-        <div className="relative flex items-center justify-between px-3 md:px-6 py-2 md:py-3">
+        <div className="relative flex items-center justify-between px-3 md:px-6 py-2 md:py-3 gap-2 md:gap-4">
           {/* Logo */}
           <Link href="/" className="block group flex-shrink-0">
             <img
               src="/logos/LOGO-01-cropped.png"
               alt="Sovereign Capital"
-              className="w-[80px] md:w-[140px] lg:w-[160px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
+              className="w-[100px] md:w-[140px] lg:w-[160px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
             />
           </Link>
 
-          {/* Dynamic Search Bar - Hidden on mobile, shown on md+ */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
-            <form onSubmit={handleSearch} className="relative">
+          {/* Dynamic Search Bar - Full width, centered */}
+          <div className="flex-1 flex justify-center px-2 md:px-4">
+            <form onSubmit={handleSearch} className="relative w-full max-w-[200px] md:max-w-xs lg:max-w-md">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-sovereign-gold" />
+                <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 text-sovereign-gold" />
                 <input
                   ref={searchInputRef}
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-64 md:w-72 lg:w-96 pl-10 pr-4 py-2 rounded-full text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sovereign-gold bg-sovereign-black/80 backdrop-blur-xl text-white border border-sovereign-gold/30 shadow-lg shadow-black/20 hover:border-sovereign-gold/50"
+                  className="w-full pl-8 md:pl-10 pr-3 md:pr-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sovereign-gold bg-sovereign-black/80 backdrop-blur-xl text-white border border-sovereign-gold/30 shadow-lg shadow-black/20 hover:border-sovereign-gold/50"
                 />
                 {/* Animated Placeholder */}
                 {!searchQuery && (
-                  <span className="absolute left-10 top-1/2 -translate-y-1/2 text-sm pointer-events-none text-white/60">
+                  <span className="absolute left-8 md:left-10 top-1/2 -translate-y-1/2 text-xs md:text-sm pointer-events-none text-white/60 whitespace-nowrap overflow-hidden">
                     <span key={placeholderIndex} className="animate-fade-in">
                       {searchPlaceholders[placeholderIndex]}
                     </span>
@@ -116,18 +116,10 @@ export default function Header() {
             </form>
           </div>
 
-          {/* Mobile Search Button */}
-          <button
-            onClick={() => setSearchOpen(!searchOpen)}
-            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center bg-sovereign-black/50 backdrop-blur-xl border border-sovereign-gold/30 text-white"
-          >
-            <Search className="w-4 h-4" />
-          </button>
-
           {/* Menu Button */}
           <button
             onClick={() => setMenuOpen(true)}
-            className="w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-500 group bg-sovereign-black/50 backdrop-blur-xl border border-sovereign-gold/30 text-white hover:bg-sovereign-gold hover:text-sovereign-black hover:border-sovereign-gold"
+            className="w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-500 group bg-sovereign-black/50 backdrop-blur-xl border border-sovereign-gold/30 text-white hover:bg-sovereign-gold hover:text-sovereign-black hover:border-sovereign-gold flex-shrink-0"
           >
             <div className="flex flex-col gap-1.5">
               <span className="block w-5 h-0.5 bg-current transition-all duration-300" />
