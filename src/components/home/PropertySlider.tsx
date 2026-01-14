@@ -72,7 +72,7 @@ export default function PropertySlider() {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12">
         <div className="flex items-center justify-between">
-          <h2 className="text-3xl md:text-4xl font-serif text-white">Abu Dhabi&apos;s Top Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-serif text-white font-bold">Abu Dhabi&apos;s Top Projects</h2>
           <div className="flex items-center gap-4">
             <button 
               onClick={() => scroll('left')}
@@ -100,7 +100,7 @@ export default function PropertySlider() {
           <Link
             key={property.id}
             href={`/properties/${property.id}`}
-            className="group flex-shrink-0 w-[350px] md:w-[400px] bg-sovereign-black overflow-hidden"
+            className="group flex-shrink-0 w-[420px] md:w-[480px] bg-sovereign-black overflow-hidden"
           >
             {/* Image */}
             <div className="relative aspect-[4/3] overflow-hidden">

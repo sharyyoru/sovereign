@@ -26,6 +26,15 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/60 to-sovereign-black/90 z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-sovereign-gold/10 via-transparent to-sovereign-gold/10 z-10" />
         
+        {/* Animated Header Text */}
+        <div className="absolute inset-0 flex items-center justify-center z-20 px-6">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white text-center max-w-5xl leading-tight animate-fade-in">
+            Unleash your full Investment Potential with{' '}
+            <span className="text-sovereign-gold">Premium Investments</span>{' '}
+            in Abu Dhabi
+          </h1>
+        </div>
+        
         {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20">
           <div className="flex flex-col items-center gap-2 animate-bounce">
