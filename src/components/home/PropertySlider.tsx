@@ -100,7 +100,7 @@ export default function PropertySlider() {
           <Link
             key={property.id}
             href={`/properties/${property.id}`}
-            className="group flex-shrink-0 w-[420px] md:w-[480px] bg-sovereign-black overflow-hidden"
+            className="group flex-shrink-0 w-[315px] md:w-[480px] bg-sovereign-black overflow-hidden"
           >
             {/* Image */}
             <div className="relative aspect-[4/3] overflow-hidden">

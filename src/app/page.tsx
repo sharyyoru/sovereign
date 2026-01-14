@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <div className="page-transition">
       {/* Hero Section - YouTube Video Background */}
-      <section className="relative min-h-screen flex items-center bg-sovereign-black overflow-hidden">
+      <section className="relative h-[88vh] md:h-screen max-h-[88vh] md:max-h-screen flex items-center bg-sovereign-black overflow-hidden">
         {/* YouTube Video Background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <iframe
