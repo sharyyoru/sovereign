@@ -13,7 +13,7 @@ export default function HomePage() {
         {/* YouTube Video Background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <iframe
-            src="https://www.youtube.com/embed/_5CSitKheXQ?autoplay=1&mute=1&loop=1&playlist=_5CSitKheXQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1&disablekb=1"
+            src="https://www.youtube.com/embed/_5CSitKheXQ?autoplay=1&mute=1&loop=1&playlist=_5CSitKheXQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1&disablekb=1&start=52"
             title="Background Video"
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] h-[200vh] min-w-[100vw] min-h-[100vh] pointer-events-none"
             style={{ aspectRatio: '16/9' }}
@@ -36,8 +36,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Property Slider - G42 News Style - Overlapping with hero, asymmetric layout */}
-      <div className="relative -mt-48 z-20 ml-[5%] md:ml-[20%] lg:ml-[40%]">
+      {/* Property Slider - G42 News Style - Positioned at 60% from top, asymmetric layout */}
+      <div className="relative -mt-[40vh] z-20 ml-[5%] md:ml-[20%] lg:ml-[40%]">
         <PropertySlider />
       </div>
 
