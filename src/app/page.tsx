@@ -18,9 +18,9 @@ export default function HomePage() {
             loop
             playsInline
             className="w-full h-full object-cover opacity-30"
-            poster="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80"
+            poster="https://images.unsplash.com/photo-1578681041175-9717c638e1d4?w=1920&q=80"
           >
-            <source src="https://videos.pexels.com/video-files/3694383/3694383-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+            <source src="https://videos.pexels.com/video-files/5765164/5765164-uhd_2560_1440_25fps.mp4" type="video/mp4" />
           </video>
         </div>
         
@@ -35,9 +35,9 @@ export default function HomePage() {
             <p className="text-sovereign-charcoal/60 font-sans text-lg md:text-xl mb-6 animate-fade-in">
               Premier real estate advisory in Abu Dhabi
             </p>
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-sovereign-charcoal leading-[0.95] mb-12 animate-slide-up font-bold tracking-tight">
+            <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-sovereign-charcoal leading-[0.95] mb-12 animate-slide-up font-bold tracking-tight drop-shadow-lg" style={{ textShadow: '2px 2px 8px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5)' }}>
               TO ENABLE<br />
-              <span className="text-sovereign-gold">INTELLIGENT</span><br />
+              <span className="text-sovereign-gold drop-shadow-md" style={{ textShadow: '2px 2px 8px rgba(201,169,98,0.4), 0 0 15px rgba(255,255,255,0.6)' }}>INTELLIGENT</span><br />
               INVESTMENTS
             </h1>
           </div>
@@ -96,7 +96,7 @@ export default function HomePage() {
             <div className="relative">
               <div className="aspect-[4/3] relative overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80"
+                  src="https://images.unsplash.com/photo-1578681041175-9717c638e1d4?w=800&q=80"
                   alt="Abu Dhabi Skyline"
                   fill
                   className="object-cover"

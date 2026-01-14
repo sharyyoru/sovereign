@@ -1,11 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { X, ArrowRight } from 'lucide-react'
+import { X, ArrowRight, Search } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 const navigation = [
   { name: 'Properties', href: '/properties' },
@@ -18,7 +18,11 @@ const navigation = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const searchInputRef = useRef<HTMLInputElement>(null)
   const pathname = usePathname()
+  const router = useRouter()
   const isHomePage = pathname === '/'
 
   useEffect(() => {
@@ -29,27 +33,86 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus()
+    }
+  }, [searchOpen])
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      router.push(`/properties?search=${encodeURIComponent(searchQuery.trim())}`)
+      setSearchOpen(false)
+      setSearchQuery('')
+    }
+  }
+
   // Determine if we need light or dark mode based on page and scroll
   const isDarkMode = isHomePage && !scrolled
 
   return (
     <>
+      {/* Dark gradient overlay for header area */}
+      <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-40 pointer-events-none" />
+
       {/* Main Header - Logo only */}
       <header className="fixed top-0 left-0 z-50 p-6 md:p-8">
         <Link href="/" className="block group">
-          <Image
+          <img
             src="/logos/LOGO-01.png"
             alt="Sovereign Capital"
-            width={400}
-            height={400}
             className={cn(
-              "h-16 md:h-20 lg:h-24 w-auto transition-all duration-500 group-hover:scale-105",
+              "h-12 md:h-14 lg:h-16 w-auto transition-all duration-500 group-hover:scale-105",
               isDarkMode ? "brightness-0 invert" : ""
             )}
-            priority
           />
         </Link>
       </header>
+
+      {/* Dynamic Search Bar - Top Center */}
+      <div className="fixed top-6 md:top-8 left-1/2 -translate-x-1/2 z-50">
+        <div className={cn(
+          "flex items-center transition-all duration-500",
+          searchOpen ? "w-64 md:w-80" : "w-auto"
+        )}>
+          {searchOpen ? (
+            <form onSubmit={handleSearch} className="relative w-full">
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search properties..."
+                className="w-full px-4 py-2.5 pr-10 bg-white/95 backdrop-blur-xl rounded-full text-sovereign-charcoal text-sm placeholder:text-sovereign-charcoal/50 focus:outline-none focus:ring-2 focus:ring-sovereign-gold shadow-lg"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchOpen(false)
+                  setSearchQuery('')
+                }}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-sovereign-charcoal/50 hover:text-sovereign-charcoal"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </form>
+          ) : (
+            <button
+              onClick={() => setSearchOpen(true)}
+              className={cn(
+                "flex items-center gap-2 px-4 py-2.5 rounded-full transition-all duration-300 shadow-lg",
+                scrolled || !isHomePage
+                  ? "bg-white/95 text-sovereign-charcoal hover:bg-white"
+                  : "bg-white/20 backdrop-blur-xl text-white hover:bg-white/30 border border-white/20"
+              )}
+            >
+              <Search className="w-4 h-4" />
+              <span className="text-sm font-medium hidden md:inline">Search</span>
+            </button>
+          )}
+        </div>
+      </div>
 
       {/* Sticky Menu Button - G42 Style (Right Side) */}
       <button
