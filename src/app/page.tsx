@@ -11,13 +11,18 @@ export default function HomePage() {
     <div className="page-transition">
       {/* Hero Section - YouTube Video Background */}
       <section className="relative h-[88vh] md:h-screen max-h-[88vh] md:max-h-screen flex items-center bg-sovereign-black overflow-hidden">
-        {/* YouTube Video Background */}
+        {/* YouTube Video Background - Full cover, centered */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <iframe
             src="https://www.youtube.com/embed/_5CSitKheXQ?autoplay=1&mute=1&loop=1&playlist=_5CSitKheXQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1&disablekb=1&start=52"
             title="Background Video"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] h-[200vh] min-w-[100vw] min-h-[100vh] pointer-events-none"
-            style={{ aspectRatio: '16/9' }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            style={{ 
+              width: '177.78vh', /* 16:9 aspect ratio based on height */
+              height: '100%',
+              minWidth: '100%',
+              minHeight: '56.25vw' /* 16:9 aspect ratio based on width */
+            }}
             allow="autoplay; encrypted-media"
             allowFullScreen
           />
