@@ -26,13 +26,23 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/60 to-sovereign-black/90 z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-sovereign-gold/10 via-transparent to-sovereign-gold/10 z-10" />
         
-        {/* Animated Header Text */}
-        <div className="absolute inset-0 flex items-center justify-center z-20 px-6">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white text-center max-w-5xl leading-tight animate-fade-in">
-            Unleash your full Investment Potential with{' '}
-            <span className="text-sovereign-gold">Premium Investments</span>{' '}
-            in Abu Dhabi
-          </h1>
+        {/* Animated Header Text - Positioned Higher */}
+        <div className="absolute inset-0 flex items-start justify-center z-20 px-6 pt-[20vh] md:pt-[25vh]">
+          <div className="text-center max-w-5xl">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white leading-tight">
+              <span className="inline-block animate-slide-up" style={{ animationDelay: '0.1s' }}>
+                Unleash your full Investment Potential
+              </span>
+              <br />
+              <span className="inline-block animate-slide-up" style={{ animationDelay: '0.3s' }}>
+                with <span className="text-sovereign-gold animate-pulse-slow">Premium Investments</span>
+              </span>
+              <br />
+              <span className="inline-block animate-slide-up" style={{ animationDelay: '0.5s' }}>
+                in Abu Dhabi
+              </span>
+            </h1>
+          </div>
         </div>
         
         {/* Scroll indicator */}

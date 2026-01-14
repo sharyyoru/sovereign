@@ -68,9 +68,9 @@ export default function PropertySlider() {
   }
 
   return (
-    <section className="py-12 overflow-hidden">
+    <section className="py-12 overflow-visible">
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-8">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl md:text-4xl font-serif text-white font-bold">Abu Dhabi&apos;s Top Projects</h2>
           <div className="flex items-center gap-4">
@@ -90,11 +90,11 @@ export default function PropertySlider() {
         </div>
       </div>
 
-      {/* Slider */}
+      {/* Slider - Full width scroll like G42 */}
       <div 
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scrollbar-hide px-6 lg:px-8 pb-4"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="flex gap-6 overflow-x-auto scrollbar-hide pl-6 lg:pl-8 pb-4 snap-x snap-mandatory"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'smooth' }}
       >
         {properties.map((property, index) => (
           <Link
