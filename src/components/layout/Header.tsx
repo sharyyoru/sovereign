@@ -38,13 +38,6 @@ export default function Header() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
       setScrolled(currentScrollY > 50)
-      
-      // Smart sticky header - hide on scroll down, show on scroll up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setHeaderVisible(false)
-      } else {
-        setHeaderVisible(true)
-      }
       setLastScrollY(currentScrollY)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -81,51 +74,39 @@ export default function Header() {
     <>
       {/* Smart Sticky Header Container */}
       <div className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        headerVisible ? "translate-y-0" : "-translate-y-full",
-        scrolled ? "bg-sovereign-charcoal/95 backdrop-blur-xl shadow-lg" : ""
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        scrolled ? "bg-sovereign-green/95 backdrop-blur-xl shadow-2xl" : ""
       )}>
-        {/* Dark gradient overlay for header area - only when not scrolled */}
+        {/* Gradient overlay for header area - only when not scrolled */}
         {!scrolled && (
-          <div className="absolute inset-0 h-32 bg-gradient-to-b from-black/70 via-black/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 h-32 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/40 to-transparent pointer-events-none" />
         )}
 
-        <div className="relative flex items-center justify-between px-6 md:px-8 py-4 md:py-6">
-          {/* Logo */}
-          <Link href="/" className="block group">
+        <div className="relative flex items-center justify-between px-6 md:px-8 py-4 md:py-5">
+          {/* Logo - Fixed width 300px */}
+          <Link href="/" className="block group flex-shrink-0">
             <img
               src="/logos/LOGO-01.png"
               alt="Sovereign Capital"
-              className={cn(
-                "h-10 md:h-12 lg:h-14 w-auto transition-all duration-500 group-hover:scale-105",
-                (isDarkMode || scrolled) ? "brightness-0 invert" : ""
-              )}
+              className="w-[200px] md:w-[250px] lg:w-[300px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
             />
           </Link>
 
-          {/* Dynamic Search Bar - Center */}
+          {/* Dynamic Search Bar - Center - Black & Gold Glass */}
           <div className="absolute left-1/2 -translate-x-1/2">
             <form onSubmit={handleSearch} className="relative">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-sovereign-charcoal/50" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-sovereign-gold" />
                 <input
                   ref={searchInputRef}
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className={cn(
-                    "w-72 md:w-96 lg:w-[28rem] pl-11 pr-4 py-3 rounded-full text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sovereign-gold",
-                    scrolled
-                      ? "bg-white/10 text-white placeholder:text-white/50 border border-white/20"
-                      : "bg-white/90 backdrop-blur-xl text-sovereign-charcoal placeholder:text-sovereign-charcoal/50 shadow-lg"
-                  )}
+                  className="w-72 md:w-96 lg:w-[28rem] pl-11 pr-4 py-3 rounded-full text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sovereign-gold bg-sovereign-black/80 backdrop-blur-xl text-white border border-sovereign-gold/30 shadow-lg shadow-black/20 hover:border-sovereign-gold/50"
                 />
                 {/* Animated Placeholder */}
                 {!searchQuery && (
-                  <span className={cn(
-                    "absolute left-11 top-1/2 -translate-y-1/2 text-sm pointer-events-none transition-opacity duration-500",
-                    scrolled ? "text-white/50" : "text-sovereign-charcoal/50"
-                  )}>
+                  <span className="absolute left-11 top-1/2 -translate-y-1/2 text-sm pointer-events-none text-white/60">
                     <span key={placeholderIndex} className="animate-fade-in">
                       {searchPlaceholders[placeholderIndex]}
                     </span>
@@ -138,12 +119,7 @@ export default function Header() {
           {/* Menu Button */}
           <button
             onClick={() => setMenuOpen(true)}
-            className={cn(
-              "w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-500 group",
-              scrolled
-                ? "bg-white/10 text-white hover:bg-sovereign-gold hover:text-sovereign-black border border-white/20"
-                : "bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20"
-            )}
+            className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-500 group bg-sovereign-black/50 backdrop-blur-xl border border-sovereign-gold/30 text-white hover:bg-sovereign-gold hover:text-sovereign-black hover:border-sovereign-gold"
           >
             <div className="flex flex-col gap-1.5">
               <span className="block w-5 h-0.5 bg-current transition-all duration-300" />

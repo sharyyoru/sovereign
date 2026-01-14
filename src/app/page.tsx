@@ -22,8 +22,9 @@ export default function HomePage() {
           />
         </div>
         
-        {/* Color Filter Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-sovereign-charcoal/70 via-sovereign-black/50 to-sovereign-black/80 z-10" />
+        {/* Color Filter Overlay - Green & Gold */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/60 to-sovereign-black/90 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-sovereign-gold/10 via-transparent to-sovereign-gold/10 z-10" />
         
         {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20">
