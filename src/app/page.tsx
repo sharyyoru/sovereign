@@ -36,8 +36,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Property Slider - G42 News Style - Overlapping with hero */}
-      <div className="relative -mt-32 z-20">
+      {/* Property Slider - G42 News Style - Overlapping with hero, asymmetric layout */}
+      <div className="relative -mt-48 z-20 ml-[5%] md:ml-[20%] lg:ml-[40%]">
         <PropertySlider />
       </div>
 
@@ -77,15 +77,14 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Right Column - YouTube Video */}
+            {/* Right Column - YouTube Video Background Style */}
             <div className="relative">
               <div className="aspect-video relative overflow-hidden rounded-lg shadow-xl">
                 <iframe
-                  src="https://www.youtube.com/embed/cqcHd1CVMgw?autoplay=0&mute=1&loop=1&playlist=cqcHd1CVMgw&controls=1&modestbranding=1&rel=0"
+                  src="https://www.youtube.com/embed/cqcHd1CVMgw?autoplay=1&mute=1&loop=1&playlist=cqcHd1CVMgw&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&disablekb=1"
                   title="About Sovereign Capital"
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  allow="autoplay; encrypted-media"
                 />
               </div>
             </div>

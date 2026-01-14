@@ -68,21 +68,21 @@ export default function PropertySlider() {
   }
 
   return (
-    <section className="py-20 bg-sovereign-charcoal overflow-hidden">
+    <section className="py-12 overflow-hidden">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12">
         <div className="flex items-center justify-between">
-          <h2 className="text-3xl md:text-4xl font-serif text-white">PROPERTIES</h2>
+          <h2 className="text-3xl md:text-4xl font-serif text-sovereign-charcoal">PROPERTIES</h2>
           <div className="flex items-center gap-4">
             <button 
               onClick={() => scroll('left')}
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+              className="w-12 h-12 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal/10 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
             <button 
               onClick={() => scroll('right')}
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+              className="w-12 h-12 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal/10 transition-colors"
             >
               <ArrowRight className="w-5 h-5" />
             </button>
