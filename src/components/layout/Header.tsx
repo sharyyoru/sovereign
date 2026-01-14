@@ -82,14 +82,16 @@ export default function Header() {
           <div className="absolute inset-0 h-32 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/40 to-transparent pointer-events-none" />
         )}
 
-        <div className="relative flex items-center justify-between px-4 md:px-6 h-16 md:h-20">
-          {/* Logo - Height controlled for proper header size */}
+        <div className="relative flex items-center justify-between px-4 md:px-6 py-3">
+          {/* Logo - Fixed 300px width with contained height */}
           <Link href="/" className="block group flex-shrink-0">
-            <img
-              src="/logos/LOGO-01.png"
-              alt="Sovereign Capital"
-              className="h-10 md:h-12 lg:h-14 w-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
-            />
+            <div className="w-[200px] md:w-[250px] lg:w-[300px] h-[50px] md:h-[60px] lg:h-[70px] relative">
+              <img
+                src="/logos/LOGO-01.png"
+                alt="Sovereign Capital"
+                className="w-full h-full object-contain object-left transition-all duration-500 group-hover:scale-105 brightness-0 invert"
+              />
+            </div>
           </Link>
 
           {/* Dynamic Search Bar - Center - Black & Gold Glass */}
