@@ -133,24 +133,28 @@ export default function HomePage() {
               Real Estate Developer Partners
             </p>
             <div className="relative overflow-hidden">
-              <div className="flex animate-scroll-x gap-16 items-center">
-                {/* First set of logos */}
-                <div className="flex gap-16 items-center flex-shrink-0">
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Aldar_Properties_Logo.svg/200px-Aldar_Properties_Logo.svg.png" alt="Aldar Properties" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Emaar_Properties_logo.svg/200px-Emaar_Properties_logo.svg.png" alt="Emaar Properties" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/DAMAC_Properties_logo.svg/200px-DAMAC_Properties_logo.svg.png" alt="DAMAC Properties" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Nakheel_logo.svg/200px-Nakheel_logo.svg.png" alt="Nakheel" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Meraas_logo.svg/200px-Meraas_logo.svg.png" alt="Meraas" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/en/thumb/8/89/Sobha_Realty_logo.svg/200px-Sobha_Realty_logo.svg.png" alt="Sobha Realty" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
+              <div className="flex animate-scroll-x gap-12 md:gap-16 items-center">
+                {/* First set of partner names */}
+                <div className="flex gap-12 md:gap-16 items-center flex-shrink-0">
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">ALDAR</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">EMAAR</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">DAMAC</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">NAKHEEL</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">MERAAS</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">SOBHA</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">BLOOM</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">REPORTAGE</span>
                 </div>
                 {/* Duplicate set for seamless loop */}
-                <div className="flex gap-16 items-center flex-shrink-0">
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Aldar_Properties_Logo.svg/200px-Aldar_Properties_Logo.svg.png" alt="Aldar Properties" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Emaar_Properties_logo.svg/200px-Emaar_Properties_logo.svg.png" alt="Emaar Properties" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/DAMAC_Properties_logo.svg/200px-DAMAC_Properties_logo.svg.png" alt="DAMAC Properties" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Nakheel_logo.svg/200px-Nakheel_logo.svg.png" alt="Nakheel" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Meraas_logo.svg/200px-Meraas_logo.svg.png" alt="Meraas" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
-                  <Image src="https://upload.wikimedia.org/wikipedia/en/thumb/8/89/Sobha_Realty_logo.svg/200px-Sobha_Realty_logo.svg.png" alt="Sobha Realty" width={120} height={40} className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100" />
+                <div className="flex gap-12 md:gap-16 items-center flex-shrink-0">
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">ALDAR</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">EMAAR</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">DAMAC</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">NAKHEEL</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">MERAAS</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">SOBHA</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">BLOOM</span>
+                  <span className="text-xl md:text-2xl font-serif text-sovereign-charcoal/40 hover:text-sovereign-charcoal transition-colors whitespace-nowrap">REPORTAGE</span>
                 </div>
               </div>
             </div>

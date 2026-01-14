@@ -114,23 +114,45 @@ export default function ServiceScroller() {
 
       {/* Header - Centered with paddle buttons */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-6 md:mb-8 w-full">
-        <div className="flex items-center justify-between">
+        {/* Desktop Layout */}
+        <div className="hidden md:flex items-center justify-between">
           <div className="flex-1" />
           <h2 className="text-3xl md:text-5xl font-serif text-sovereign-charcoal uppercase tracking-wide text-center">
-            What We Do
+            The Sovereign Way
           </h2>
           <div className="flex-1 flex justify-end gap-3">
             <button 
               onClick={() => scroll('left')}
-              className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal hover:text-white transition-all duration-300"
+              className="w-14 h-14 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal hover:text-white transition-all duration-300"
             >
-              <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
+              <ArrowLeft className="w-5 h-5" />
             </button>
             <button 
               onClick={() => scroll('right')}
-              className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal hover:text-white transition-all duration-300"
+              className="w-14 h-14 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal hover:text-white transition-all duration-300"
             >
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+        
+        {/* Mobile Layout - Paddles under title */}
+        <div className="flex md:hidden flex-col items-center gap-4">
+          <h2 className="text-3xl font-serif text-sovereign-charcoal uppercase tracking-wide text-center">
+            The Sovereign Way
+          </h2>
+          <div className="flex gap-3">
+            <button 
+              onClick={() => scroll('left')}
+              className="w-10 h-10 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal hover:text-white transition-all duration-300"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button 
+              onClick={() => scroll('right')}
+              className="w-10 h-10 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal hover:text-white transition-all duration-300"
+            >
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
