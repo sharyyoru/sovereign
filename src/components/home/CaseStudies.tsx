@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
@@ -31,6 +31,14 @@ const caseStudies = [
 
 export default function CaseStudies() {
   const [activeIndex, setActiveIndex] = useState(0)
+
+  // Auto-rotate between case studies
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % caseStudies.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <section className="relative min-h-screen bg-sovereign-green overflow-hidden">

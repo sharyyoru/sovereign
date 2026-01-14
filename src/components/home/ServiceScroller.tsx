@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
@@ -44,17 +44,33 @@ const services = [
 ]
 
 export default function ServiceScroller() {
+  const [activeIndex, setActiveIndex] = useState(1)
   const scrollRef = useRef<HTMLDivElement>(null)
 
+  // Auto-scroll loop
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % services.length)
+    }, 3500)
+    return () => clearInterval(interval)
+  }, [])
+
   const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = 380
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      })
+    if (direction === 'left') {
+      setActiveIndex((prev) => (prev - 1 + services.length) % services.length)
+    } else {
+      setActiveIndex((prev) => (prev + 1) % services.length)
     }
   }
+
+  // Get visible items (prev, current, next)
+  const getVisibleItems = () => {
+    const prev = (activeIndex - 1 + services.length) % services.length
+    const next = (activeIndex + 1) % services.length
+    return [prev, activeIndex, next]
+  }
+
+  const visibleIndices = getVisibleItems()
 
   return (
     <section className="py-20 bg-[#f5f3ef] overflow-hidden">
@@ -82,45 +98,47 @@ export default function ServiceScroller() {
         </div>
       </div>
 
-      {/* Horizontal Scroller */}
-      <div 
-        ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scrollbar-hide px-6 lg:px-8 pb-4"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'smooth' }}
-      >
-          {services.map((service, index) => (
-            <Link
-              key={service.title}
-              href={service.href}
-              className="group flex-shrink-0 w-[350px] md:w-[450px] relative overflow-hidden"
-            >
-              <div className={`${service.color} aspect-square relative overflow-hidden`}>
-                {/* Service Image */}
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover mix-blend-multiply opacity-60 group-hover:scale-110 transition-transform duration-700"
-                />
-                
-                {/* Decorative elements */}
-                <div className="absolute top-6 right-6 w-3 h-3 bg-sovereign-gold rounded-full" />
-                <div className="absolute bottom-1/4 left-1/4 w-32 h-32 border border-white/30 rounded-full" />
-                
-                {/* Content overlay - Black glass background with white text */}
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <div className="bg-sovereign-black/70 backdrop-blur-md p-6 rounded-lg">
-                    <h3 className="text-2xl md:text-3xl font-serif text-white mb-3 uppercase tracking-wide">
-                      {service.title}
-                    </h3>
-                    <p className="text-white/80 text-sm leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
+      {/* Diagonal Gallery Layout */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-center gap-4 md:gap-8 min-h-[500px]">
+          {visibleIndices.map((serviceIndex, position) => {
+            const service = services[serviceIndex]
+            const isCenter = position === 1
+            const isLeft = position === 0
+            
+            return (
+              <Link
+                key={service.title}
+                href={service.href}
+                className={`group relative overflow-hidden rounded-2xl transition-all duration-500 ${
+                  isCenter 
+                    ? 'w-[280px] md:w-[400px] h-[350px] md:h-[450px] z-20' 
+                    : 'w-[200px] md:w-[300px] h-[280px] md:h-[380px] z-10 opacity-80'
+                } ${isLeft ? '-translate-y-8' : position === 2 ? 'translate-y-8' : ''}`}
+              >
+                <div className={`${service.color} w-full h-full relative overflow-hidden`}>
+                  {/* Service Image */}
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover mix-blend-multiply opacity-70 group-hover:scale-110 transition-transform duration-700"
+                  />
+                  
+                  {/* Decorative elements */}
+                  <div className="absolute top-4 right-4 w-2 h-2 bg-sovereign-gold rounded-full" />
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            )
+          })}
+        </div>
+
+        {/* Active Item Description - Centered below */}
+        <div className="text-center mt-8 max-w-2xl mx-auto">
+          <p className="text-sovereign-charcoal/80 text-sm md:text-base leading-relaxed">
+            {services[activeIndex].description}
+          </p>
+        </div>
       </div>
     </section>
   )
