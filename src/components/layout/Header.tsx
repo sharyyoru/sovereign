@@ -82,13 +82,13 @@ export default function Header() {
           <div className="absolute inset-0 h-32 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/40 to-transparent pointer-events-none" />
         )}
 
-        <div className="relative flex items-center justify-between px-4 md:px-6 py-2">
-          {/* Logo - Fixed 300px width */}
+        <div className="relative flex items-center justify-between px-4 md:px-6 py-3">
+          {/* Logo - Fixed 300px width with cropped version */}
           <Link href="/" className="block group flex-shrink-0">
             <img
-              src="/logos/LOGO-01.png"
+              src="/logos/LOGO-01-cropped.png"
               alt="Sovereign Capital"
-              className="w-[200px] md:w-[250px] lg:w-[300px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
+              className="w-[180px] md:w-[240px] lg:w-[300px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
             />
           </Link>
 
@@ -155,9 +155,9 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <Link href="/" onClick={() => setMenuOpen(false)}>
               <img
-                src="/logos/LOGO-01.png"
+                src="/logos/LOGO-01-cropped.png"
                 alt="Sovereign Capital"
-                className="w-[300px] md:w-[350px] lg:w-[400px] h-auto brightness-0 invert"
+                className="w-[280px] md:w-[340px] lg:w-[400px] h-auto brightness-0 invert"
               />
             </Link>
             <button

@@ -37,9 +37,9 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6 group">
               <img
-                src="/logos/LOGO-01.png"
+                src="/logos/LOGO-01-cropped.png"
                 alt="Sovereign Capital"
-                className="w-[250px] md:w-[280px] lg:w-[300px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
+                className="w-[220px] md:w-[260px] lg:w-[300px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
               />
             </Link>
             <p className="text-sm leading-relaxed mb-6 max-w-sm">
