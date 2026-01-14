@@ -88,7 +88,7 @@ export default function Header() {
             <img
               src="/logos/LOGO-01-cropped.png"
               alt="Sovereign Capital"
-              className="w-[180px] md:w-[240px] lg:w-[300px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
+              className="w-[120px] md:w-[140px] lg:w-[160px] h-auto transition-all duration-500 group-hover:scale-105 brightness-0 invert"
             />
           </Link>
 
@@ -157,7 +157,7 @@ export default function Header() {
               <img
                 src="/logos/LOGO-01-cropped.png"
                 alt="Sovereign Capital"
-                className="w-[280px] md:w-[340px] lg:w-[400px] h-auto brightness-0 invert"
+                className="w-[200px] md:w-[240px] lg:w-[280px] h-auto brightness-0 invert"
               />
             </Link>
             <button
