@@ -15,11 +15,20 @@ const navigation = [
   { name: 'About', href: '/about' },
 ]
 
+const searchPlaceholders = [
+  'Search for Properties...',
+  'Search for Offplan...',
+  'Search for Investments...'
+]
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [placeholderIndex, setPlaceholderIndex] = useState(0)
+  const [headerVisible, setHeaderVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const searchInputRef = useRef<HTMLInputElement>(null)
   const pathname = usePathname()
   const router = useRouter()
@@ -27,10 +36,27 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      const currentScrollY = window.scrollY
+      setScrolled(currentScrollY > 50)
+      
+      // Smart sticky header - hide on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setHeaderVisible(false)
+      } else {
+        setHeaderVisible(true)
+      }
+      setLastScrollY(currentScrollY)
     }
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
+
+  // Animated placeholder rotation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlaceholderIndex((prev) => (prev + 1) % searchPlaceholders.length)
+    }, 3000)
+    return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {
@@ -53,88 +79,79 @@ export default function Header() {
 
   return (
     <>
-      {/* Dark gradient overlay for header area */}
-      <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-40 pointer-events-none" />
+      {/* Smart Sticky Header Container */}
+      <div className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        headerVisible ? "translate-y-0" : "-translate-y-full",
+        scrolled ? "bg-sovereign-charcoal/95 backdrop-blur-xl shadow-lg" : ""
+      )}>
+        {/* Dark gradient overlay for header area - only when not scrolled */}
+        {!scrolled && (
+          <div className="absolute inset-0 h-32 bg-gradient-to-b from-black/70 via-black/40 to-transparent pointer-events-none" />
+        )}
 
-      {/* Main Header - Logo only */}
-      <header className="fixed top-0 left-0 z-50 p-6 md:p-8">
-        <Link href="/" className="block group">
-          <img
-            src="/logos/LOGO-01.png"
-            alt="Sovereign Capital"
-            className={cn(
-              "h-12 md:h-14 lg:h-16 w-auto transition-all duration-500 group-hover:scale-105",
-              isDarkMode ? "brightness-0 invert" : ""
-            )}
-          />
-        </Link>
-      </header>
-
-      {/* Dynamic Search Bar - Top Center */}
-      <div className="fixed top-6 md:top-8 left-1/2 -translate-x-1/2 z-50">
-        <div className={cn(
-          "flex items-center transition-all duration-500",
-          searchOpen ? "w-64 md:w-80" : "w-auto"
-        )}>
-          {searchOpen ? (
-            <form onSubmit={handleSearch} className="relative w-full">
-              <input
-                ref={searchInputRef}
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search properties..."
-                className="w-full px-4 py-2.5 pr-10 bg-white/95 backdrop-blur-xl rounded-full text-sovereign-charcoal text-sm placeholder:text-sovereign-charcoal/50 focus:outline-none focus:ring-2 focus:ring-sovereign-gold shadow-lg"
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  setSearchOpen(false)
-                  setSearchQuery('')
-                }}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-sovereign-charcoal/50 hover:text-sovereign-charcoal"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </form>
-          ) : (
-            <button
-              onClick={() => setSearchOpen(true)}
+        <div className="relative flex items-center justify-between px-6 md:px-8 py-4 md:py-6">
+          {/* Logo */}
+          <Link href="/" className="block group">
+            <img
+              src="/logos/LOGO-01.png"
+              alt="Sovereign Capital"
               className={cn(
-                "flex items-center gap-2 px-4 py-2.5 rounded-full transition-all duration-300 shadow-lg",
-                scrolled || !isHomePage
-                  ? "bg-white/95 text-sovereign-charcoal hover:bg-white"
-                  : "bg-white/20 backdrop-blur-xl text-white hover:bg-white/30 border border-white/20"
+                "h-10 md:h-12 lg:h-14 w-auto transition-all duration-500 group-hover:scale-105",
+                (isDarkMode || scrolled) ? "brightness-0 invert" : ""
               )}
-            >
-              <Search className="w-4 h-4" />
-              <span className="text-sm font-medium hidden md:inline">Search</span>
-            </button>
-          )}
+            />
+          </Link>
+
+          {/* Dynamic Search Bar - Center */}
+          <div className="absolute left-1/2 -translate-x-1/2">
+            <form onSubmit={handleSearch} className="relative">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-sovereign-charcoal/50" />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className={cn(
+                    "w-72 md:w-96 lg:w-[28rem] pl-11 pr-4 py-3 rounded-full text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sovereign-gold",
+                    scrolled
+                      ? "bg-white/10 text-white placeholder:text-white/50 border border-white/20"
+                      : "bg-white/90 backdrop-blur-xl text-sovereign-charcoal placeholder:text-sovereign-charcoal/50 shadow-lg"
+                  )}
+                />
+                {/* Animated Placeholder */}
+                {!searchQuery && (
+                  <span className={cn(
+                    "absolute left-11 top-1/2 -translate-y-1/2 text-sm pointer-events-none transition-opacity duration-500",
+                    scrolled ? "text-white/50" : "text-sovereign-charcoal/50"
+                  )}>
+                    <span key={placeholderIndex} className="animate-fade-in">
+                      {searchPlaceholders[placeholderIndex]}
+                    </span>
+                  </span>
+                )}
+              </div>
+            </form>
+          </div>
+
+          {/* Menu Button */}
+          <button
+            onClick={() => setMenuOpen(true)}
+            className={cn(
+              "w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-500 group",
+              scrolled
+                ? "bg-white/10 text-white hover:bg-sovereign-gold hover:text-sovereign-black border border-white/20"
+                : "bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20"
+            )}
+          >
+            <div className="flex flex-col gap-1.5">
+              <span className="block w-5 h-0.5 bg-current transition-all duration-300" />
+              <span className="block w-5 h-0.5 bg-current transition-all duration-300" />
+            </div>
+          </button>
         </div>
       </div>
-
-      {/* Sticky Menu Button - G42 Style (Right Side) */}
-      <button
-        onClick={() => setMenuOpen(true)}
-        className={cn(
-          "fixed top-6 md:top-8 right-6 md:right-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all duration-500 group",
-          scrolled || !isHomePage
-            ? "bg-sovereign-charcoal text-white hover:bg-sovereign-gold hover:text-sovereign-black"
-            : "bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20"
-        )}
-      >
-        <div className="flex flex-col gap-1.5">
-          <span className={cn(
-            "block w-6 h-0.5 transition-all duration-300",
-            scrolled || !isHomePage ? "bg-white group-hover:bg-sovereign-black" : "bg-white"
-          )} />
-          <span className={cn(
-            "block w-6 h-0.5 transition-all duration-300",
-            scrolled || !isHomePage ? "bg-white group-hover:bg-sovereign-black" : "bg-white"
-          )} />
-        </div>
-      </button>
 
       {/* Full Screen Menu Overlay - G42 Style */}
       <div

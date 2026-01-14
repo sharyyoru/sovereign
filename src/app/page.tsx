@@ -8,46 +8,28 @@ import CaseStudies from '@/components/home/CaseStudies'
 export default function HomePage() {
   return (
     <div className="page-transition">
-      {/* Hero Section - G42 Style with Abu Dhabi Skyline */}
-      <section className="relative min-h-screen flex items-center bg-[#e8e4df] overflow-hidden">
-        {/* Abu Dhabi Skyline Video/Image */}
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover opacity-30"
-            poster="https://images.unsplash.com/photo-1578681041175-9717c638e1d4?w=1920&q=80"
-          >
-            <source src="https://videos.pexels.com/video-files/5765164/5765164-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-          </video>
+      {/* Hero Section - YouTube Video Background */}
+      <section className="relative min-h-screen flex items-center bg-sovereign-black overflow-hidden">
+        {/* YouTube Video Background */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <iframe
+            src="https://www.youtube.com/embed/_5CSitKheXQ?autoplay=1&mute=1&loop=1&playlist=_5CSitKheXQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1&disablekb=1"
+            title="Background Video"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] h-[200vh] min-w-[100vw] min-h-[100vh] pointer-events-none"
+            style={{ aspectRatio: '16/9' }}
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          />
         </div>
         
-        {/* Decorative Elements - G42 Style */}
-        <div className="absolute top-32 left-20 w-16 h-16 bg-sovereign-gold rounded-full opacity-80 animate-float hidden md:block" />
-        <div className="absolute top-40 right-1/4 w-8 h-8 bg-sovereign-charcoal rounded-full hidden md:block" />
-        <div className="absolute bottom-40 left-1/3 w-12 h-12 border-2 border-sovereign-gold rotate-45 hidden md:block" />
-        <div className="absolute top-1/3 right-20 w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[30px] border-b-sovereign-gold animate-pulse-slow hidden md:block" />
+        {/* Color Filter Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sovereign-charcoal/70 via-sovereign-black/50 to-sovereign-black/80 z-10" />
         
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32 pt-48">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="text-sovereign-charcoal/60 font-sans text-lg md:text-xl mb-6 animate-fade-in">
-              Premier real estate advisory in Abu Dhabi
-            </p>
-            <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-sovereign-charcoal leading-[0.95] mb-12 animate-slide-up font-bold tracking-tight drop-shadow-lg" style={{ textShadow: '2px 2px 8px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5)' }}>
-              TO ENABLE<br />
-              <span className="text-sovereign-gold drop-shadow-md" style={{ textShadow: '2px 2px 8px rgba(201,169,98,0.4), 0 0 15px rgba(255,255,255,0.6)' }}>INTELLIGENT</span><br />
-              INVESTMENTS
-            </h1>
-          </div>
-        </div>
-
         {/* Scroll indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20">
           <div className="flex flex-col items-center gap-2 animate-bounce">
-            <div className="w-10 h-10 rounded-full border-2 border-sovereign-charcoal/30 flex items-center justify-center">
-              <div className="w-1 h-4 bg-sovereign-charcoal/50 rounded-full" />
+            <div className="w-10 h-10 rounded-full border-2 border-white/30 flex items-center justify-center">
+              <div className="w-1 h-4 bg-white/50 rounded-full" />
             </div>
           </div>
         </div>
