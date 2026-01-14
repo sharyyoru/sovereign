@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -44,62 +44,20 @@ const services = [
 
 export default function ServiceScroller() {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (scrollRef.current) {
-        const rect = scrollRef.current.getBoundingClientRect()
-        setCursorPos({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        })
-      }
-    }
-
-    const container = scrollRef.current
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove)
-      return () => container.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [])
 
   return (
     <section className="py-20 bg-[#f5f3ef] overflow-hidden">
-      {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12">
+      {/* Header - Centered */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12 text-center">
         <h2 className="text-3xl md:text-4xl font-serif text-sovereign-charcoal uppercase tracking-wide">
           What We Do
         </h2>
       </div>
 
       {/* Horizontal Scroller */}
-      <div 
-        ref={scrollRef}
-        className="relative"
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-      >
-        {/* Custom Cursor */}
-        {isHovering && (
-          <div 
-            className="pointer-events-none fixed z-50 w-20 h-20 rounded-full bg-sovereign-charcoal/80 flex items-center justify-center text-white text-xs uppercase tracking-wider transition-transform duration-100"
-            style={{
-              left: cursorPos.x - 40,
-              top: cursorPos.y - 40,
-              transform: 'translate(0, 0)'
-            }}
-          >
-            <span className="flex items-center gap-1">
-              <span>←</span>
-              <span>→</span>
-            </span>
-          </div>
-        )}
-
+      <div ref={scrollRef} className="relative">
         <div 
-          className="flex gap-6 overflow-x-auto scrollbar-hide px-6 lg:px-8 pb-4 cursor-none"
+          className="flex gap-6 overflow-x-auto scrollbar-hide px-6 lg:px-8 pb-4"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {services.map((service, index) => (
@@ -121,14 +79,16 @@ export default function ServiceScroller() {
                 <div className="absolute top-6 right-6 w-3 h-3 bg-sovereign-gold rounded-full" />
                 <div className="absolute bottom-1/4 left-1/4 w-32 h-32 border border-white/30 rounded-full" />
                 
-                {/* Content overlay */}
-                <div className="absolute inset-0 flex flex-col justify-end p-8">
-                  <h3 className="text-2xl md:text-3xl font-serif text-sovereign-charcoal mb-3 uppercase tracking-wide">
-                    {service.title}
-                  </h3>
-                  <p className="text-sovereign-charcoal/70 text-sm leading-relaxed">
-                    {service.description}
-                  </p>
+                {/* Content overlay - Black glass background with white text */}
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <div className="bg-sovereign-black/70 backdrop-blur-md p-6 rounded-lg">
+                    <h3 className="text-2xl md:text-3xl font-serif text-white mb-3 uppercase tracking-wide">
+                      {service.title}
+                    </h3>
+                    <p className="text-white/80 text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             </Link>

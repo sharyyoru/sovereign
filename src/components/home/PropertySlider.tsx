@@ -141,8 +141,8 @@ export default function PropertySlider() {
         ))}
       </div>
 
-      {/* View All Button */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mt-8">
+      {/* View All Button with Tagline */}
+      <div className="ml-[5%] md:ml-[20%] lg:ml-[40%] pr-6 lg:pr-8 mt-8 flex items-center gap-6 flex-wrap">
         <Link 
           href="/properties"
           className="inline-flex items-center gap-2 bg-sovereign-gold text-sovereign-black px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-white transition-colors"
@@ -150,6 +150,9 @@ export default function PropertySlider() {
           View All
           <ArrowRight className="w-4 h-4" />
         </Link>
+        <p className="text-white/80 font-serif text-lg italic">
+          Your Royal Guide to the best investments in Abu Dhabi
+        </p>
       </div>
     </section>
   )

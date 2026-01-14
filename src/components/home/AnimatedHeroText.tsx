@@ -12,8 +12,7 @@ const words = [
   { text: 'Premium', highlight: true },
   { text: 'Investments', highlight: true },
   { text: 'in', highlight: false },
-  { text: 'Abu', highlight: false },
-  { text: 'Dhabi', highlight: true },
+  { text: 'Abu Dhabi', highlight: true },
 ]
 
 export default function AnimatedHeroText() {
@@ -29,7 +28,7 @@ export default function AnimatedHeroText() {
     const interval = setInterval(() => {
       setActiveIndex(highlightableIndices[currentHighlight])
       currentHighlight = (currentHighlight + 1) % highlightableIndices.length
-    }, 800)
+    }, 1500)
 
     return () => clearInterval(interval)
   }, [])
@@ -39,7 +38,7 @@ export default function AnimatedHeroText() {
       {words.map((word, index) => (
         <span key={index}>
           <span
-            className={`inline-block transition-all duration-500 ${
+            className={`inline-block transition-all duration-700 ${
               activeIndex === index
                 ? 'text-sovereign-gold scale-110 font-bold'
                 : word.highlight
