@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 const services = [
   {
@@ -45,21 +46,48 @@ const services = [
 export default function ServiceScroller() {
   const scrollRef = useRef<HTMLDivElement>(null)
 
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 380
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  }
+
   return (
     <section className="py-20 bg-[#f5f3ef] overflow-hidden">
-      {/* Header - Centered */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12 text-center">
-        <h2 className="text-3xl md:text-4xl font-serif text-sovereign-charcoal uppercase tracking-wide">
-          What We Do
-        </h2>
+      {/* Header - Centered with paddle buttons */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-8">
+        <div className="flex items-center justify-between">
+          <div className="flex-1" />
+          <h2 className="text-3xl md:text-4xl font-serif text-sovereign-charcoal uppercase tracking-wide text-center">
+            What We Do
+          </h2>
+          <div className="flex-1 flex justify-end gap-3">
+            <button 
+              onClick={() => scroll('left')}
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal/10 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
+            </button>
+            <button 
+              onClick={() => scroll('right')}
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-sovereign-charcoal/20 flex items-center justify-center text-sovereign-charcoal hover:bg-sovereign-charcoal/10 transition-colors"
+            >
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Horizontal Scroller */}
-      <div ref={scrollRef} className="relative">
-        <div 
-          className="flex gap-6 overflow-x-auto scrollbar-hide px-6 lg:px-8 pb-4"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
+      <div 
+        ref={scrollRef}
+        className="flex gap-6 overflow-x-auto scrollbar-hide px-6 lg:px-8 pb-4"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'smooth' }}
+      >
           {services.map((service, index) => (
             <Link
               key={service.title}
@@ -93,7 +121,6 @@ export default function ServiceScroller() {
               </div>
             </Link>
           ))}
-        </div>
       </div>
     </section>
   )

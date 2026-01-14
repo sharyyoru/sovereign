@@ -27,8 +27,8 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-sovereign-green/80 via-sovereign-green/60 to-sovereign-black/90 z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-sovereign-gold/10 via-transparent to-sovereign-gold/10 z-10" />
         
-        {/* Animated Header Text - Positioned Higher */}
-        <div className="absolute inset-0 flex items-start justify-center z-20 px-6 pt-[15vh] md:pt-[20vh]">
+        {/* Animated Header Text - Positioned within hero on all screens */}
+        <div className="absolute inset-0 flex items-center justify-center z-20 px-4 md:px-6 -mt-[15vh] md:-mt-[10vh]">
           <div className="text-center max-w-5xl">
             <AnimatedHeroText />
           </div>
