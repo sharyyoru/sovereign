@@ -45,42 +45,50 @@ const services = [
 
 export default function ServiceScroller() {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(false)
 
-  // Auto-scroll loop with smooth transition
+  // Auto-scroll loop - slower interval
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsTransitioning(true)
-      setTimeout(() => {
-        setActiveIndex((prev) => (prev + 1) % services.length)
-        setIsTransitioning(false)
-      }, 300)
-    }, 4500)
+      setActiveIndex((prev) => (prev + 1) % services.length)
+    }, 6000)
     return () => clearInterval(interval)
   }, [])
 
   const scroll = (direction: 'left' | 'right') => {
-    setIsTransitioning(true)
-    setTimeout(() => {
-      if (direction === 'left') {
-        setActiveIndex((prev) => (prev - 1 + services.length) % services.length)
-      } else {
-        setActiveIndex((prev) => (prev + 1) % services.length)
-      }
-      setIsTransitioning(false)
-    }, 300)
-  }
-
-  // Get 5 visible items for smooth infinite carousel effect
-  const getVisibleItems = () => {
-    const items = []
-    for (let i = -2; i <= 2; i++) {
-      items.push((activeIndex + i + services.length) % services.length)
+    if (direction === 'left') {
+      setActiveIndex((prev) => (prev - 1 + services.length) % services.length)
+    } else {
+      setActiveIndex((prev) => (prev + 1) % services.length)
     }
-    return items
   }
 
-  const visibleIndices = getVisibleItems()
+  // Calculate position for each item in the carousel
+  const getItemStyle = (index: number) => {
+    // Calculate the offset from active index (handling wrap-around)
+    let offset = index - activeIndex
+    if (offset > services.length / 2) offset -= services.length
+    if (offset < -services.length / 2) offset += services.length
+    
+    // Only show items within range
+    if (Math.abs(offset) > 2) {
+      return { display: 'none' }
+    }
+    
+    // G42-style positioning with smooth transitions
+    const translateX = offset * 280
+    const translateY = Math.abs(offset) === 2 ? 50 : Math.abs(offset) === 1 ? 25 : 0
+    const scale = offset === 0 ? 1 : Math.abs(offset) === 1 ? 0.85 : 0.7
+    const opacity = offset === 0 ? 1 : Math.abs(offset) === 1 ? 0.8 : 0.5
+    const zIndex = 30 - Math.abs(offset) * 10
+    const rotateY = offset * 15
+    
+    return {
+      transform: `translateX(${translateX}px) translateY(${translateY}px) scale(${scale}) perspective(1000px) rotateY(${rotateY}deg)`,
+      opacity,
+      zIndex,
+      transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)',
+    }
+  }
 
   return (
     <section className="min-h-screen bg-[#f5f3ef] overflow-hidden flex flex-col justify-center py-16 md:py-20">
@@ -108,30 +116,26 @@ export default function ServiceScroller() {
         </div>
       </div>
 
-      {/* Infinite Carousel Gallery */}
-      <div className="flex-1 flex items-center justify-center px-4">
-        <div className={`flex items-center justify-center gap-3 md:gap-6 lg:gap-8 transition-all duration-700 ease-out ${isTransitioning ? 'opacity-90 scale-[0.98]' : 'opacity-100 scale-100'}`}>
-          {visibleIndices.map((serviceIndex, position) => {
-            const service = services[serviceIndex]
-            const isCenter = position === 2
-            const distanceFromCenter = Math.abs(position - 2)
+      {/* Rotating Carousel Gallery */}
+      <div className="flex-1 flex items-center justify-center px-4 relative" style={{ perspective: '1200px' }}>
+        <div className="relative w-full h-[500px] flex items-center justify-center">
+          {services.map((service, index) => {
+            const style = getItemStyle(index)
+            if (style.display === 'none') return null
             
-            // G42-style diagonal positioning
-            const translateY = position === 0 ? 60 : position === 1 ? 30 : position === 2 ? 0 : position === 3 ? 30 : 60
-            const scale = isCenter ? 1 : position === 1 || position === 3 ? 0.85 : 0.7
-            const opacity = isCenter ? 1 : position === 1 || position === 3 ? 0.8 : 0.5
+            const offset = index - activeIndex
+            const normalizedOffset = offset > services.length / 2 ? offset - services.length : offset < -services.length / 2 ? offset + services.length : offset
+            const isCenter = normalizedOffset === 0
             
             return (
               <Link
-                key={`${service.title}-${position}`}
+                key={service.title}
                 href={service.href}
-                className="group relative overflow-hidden rounded-3xl transition-all duration-700 ease-out flex-shrink-0"
+                className="group absolute overflow-hidden rounded-3xl flex-shrink-0"
                 style={{
-                  width: isCenter ? '320px' : position === 1 || position === 3 ? '240px' : '160px',
-                  height: isCenter ? '420px' : position === 1 || position === 3 ? '340px' : '260px',
-                  transform: `translateY(${translateY}px) scale(${scale})`,
-                  opacity: opacity,
-                  zIndex: isCenter ? 30 : position === 1 || position === 3 ? 20 : 10,
+                  width: isCenter ? '320px' : Math.abs(normalizedOffset) === 1 ? '260px' : '200px',
+                  height: isCenter ? '420px' : Math.abs(normalizedOffset) === 1 ? '360px' : '280px',
+                  ...style,
                 }}
               >
                 <div className={`${service.color} w-full h-full relative overflow-hidden rounded-3xl`}>
@@ -153,7 +157,7 @@ export default function ServiceScroller() {
       </div>
 
       {/* Active Item Description - Centered below */}
-      <div className={`text-center mt-12 md:mt-16 max-w-3xl mx-auto px-6 transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
+      <div className="text-center mt-12 md:mt-16 max-w-3xl mx-auto px-6 transition-all duration-1000 ease-out">
         <h3 className="text-xl md:text-2xl font-serif text-sovereign-charcoal mb-4 uppercase tracking-wide">
           {services[activeIndex].title}
         </h3>
@@ -167,14 +171,8 @@ export default function ServiceScroller() {
         {services.map((_, index) => (
           <button
             key={index}
-            onClick={() => {
-              setIsTransitioning(true)
-              setTimeout(() => {
-                setActiveIndex(index)
-                setIsTransitioning(false)
-              }, 300)
-            }}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+            onClick={() => setActiveIndex(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-500 ${
               index === activeIndex 
                 ? 'bg-sovereign-gold w-6' 
                 : 'bg-sovereign-charcoal/20 hover:bg-sovereign-charcoal/40'
