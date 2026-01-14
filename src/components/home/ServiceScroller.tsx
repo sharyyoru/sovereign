@@ -91,9 +91,29 @@ export default function ServiceScroller() {
   }
 
   return (
-    <section className="min-h-screen bg-[#f5f3ef] overflow-hidden flex flex-col justify-center py-16 md:py-20">
+    <section className="min-h-screen bg-[#f5f3ef] overflow-hidden flex flex-col justify-center py-8 md:py-12 relative">
+      {/* Animated Glass Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Gradient glass overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-sovereign-gold/5" />
+        
+        {/* Animated decorative lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="none">
+          <line x1="10%" y1="0" x2="30%" y2="100%" stroke="#1a1a1a" strokeWidth="0.5" className="animate-pulse" style={{ animationDelay: '0s' }} />
+          <line x1="25%" y1="0" x2="45%" y2="100%" stroke="#c9a962" strokeWidth="0.5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <line x1="50%" y1="0" x2="70%" y2="100%" stroke="#1a1a1a" strokeWidth="0.5" className="animate-pulse" style={{ animationDelay: '1s' }} />
+          <line x1="75%" y1="0" x2="95%" y2="100%" stroke="#c9a962" strokeWidth="0.5" className="animate-pulse" style={{ animationDelay: '1.5s' }} />
+          <line x1="90%" y1="0" x2="60%" y2="100%" stroke="#1a1a1a" strokeWidth="0.3" className="animate-pulse" style={{ animationDelay: '2s' }} />
+        </svg>
+        
+        {/* Floating glass circles */}
+        <div className="absolute top-20 left-[15%] w-32 h-32 rounded-full bg-gradient-to-br from-white/30 to-transparent backdrop-blur-sm animate-float" style={{ animationDelay: '0s' }} />
+        <div className="absolute bottom-32 right-[20%] w-24 h-24 rounded-full bg-gradient-to-br from-sovereign-gold/10 to-transparent backdrop-blur-sm animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/3 right-[10%] w-16 h-16 rounded-full bg-gradient-to-br from-white/20 to-transparent backdrop-blur-sm animate-float" style={{ animationDelay: '2s' }} />
+      </div>
+
       {/* Header - Centered with paddle buttons */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12 md:mb-16 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-6 md:mb-8 w-full">
         <div className="flex items-center justify-between">
           <div className="flex-1" />
           <h2 className="text-3xl md:text-5xl font-serif text-sovereign-charcoal uppercase tracking-wide text-center">
@@ -117,8 +137,8 @@ export default function ServiceScroller() {
       </div>
 
       {/* Rotating Carousel Gallery */}
-      <div className="flex-1 flex items-center justify-center px-4 relative" style={{ perspective: '1200px' }}>
-        <div className="relative w-full h-[500px] flex items-center justify-center">
+      <div className="relative z-10 flex items-center justify-center px-4" style={{ perspective: '1200px' }}>
+        <div className="relative w-full h-[380px] md:h-[420px] flex items-center justify-center">
           {services.map((service, index) => {
             const style = getItemStyle(index)
             if (style.display === 'none') return null
@@ -157,17 +177,17 @@ export default function ServiceScroller() {
       </div>
 
       {/* Active Item Description - Centered below */}
-      <div className="text-center mt-12 md:mt-16 max-w-3xl mx-auto px-6 transition-all duration-1000 ease-out">
-        <h3 className="text-xl md:text-2xl font-serif text-sovereign-charcoal mb-4 uppercase tracking-wide">
+      <div className="relative z-10 text-center mt-6 md:mt-8 max-w-3xl mx-auto px-6 transition-all duration-1000 ease-out">
+        <h3 className="text-lg md:text-xl font-serif text-sovereign-charcoal mb-2 uppercase tracking-wide">
           {services[activeIndex].title}
         </h3>
-        <p className="text-sovereign-charcoal/70 text-sm md:text-base leading-relaxed">
+        <p className="text-sovereign-charcoal/70 text-sm leading-relaxed">
           {services[activeIndex].description}
         </p>
       </div>
 
       {/* Progress Dots */}
-      <div className="flex justify-center gap-2 mt-8">
+      <div className="relative z-10 flex justify-center gap-2 mt-4">
         {services.map((_, index) => (
           <button
             key={index}
