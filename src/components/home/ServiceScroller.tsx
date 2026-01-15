@@ -10,35 +10,35 @@ const services = [
     title: 'Luxury Villas',
     description: 'We specialize in sourcing and acquiring exclusive beachfront and golf course villas across Abu Dhabi\'s most prestigious communities. From Saadiyat Island\'s cultural district to the serene shores of Yas Island, our portfolio represents the pinnacle of luxury living. Each property is carefully vetted for investment potential, architectural excellence, and lifestyle value.',
     image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
-    color: 'bg-gradient-to-br from-pink-200 to-pink-300',
+    color: 'bg-gradient-to-br from-sovereign-gold/40 to-sovereign-gold-dark/50',
     href: '/properties?type=villa'
   },
   {
     title: 'Premium Apartments',
     description: 'Experience elevated urban living with our curated selection of high-rise residences offering panoramic views across the Abu Dhabi skyline and waterfront. We connect discerning investors with premium apartments in iconic towers, featuring world-class amenities, smart home technology, and direct access to the city\'s finest dining, shopping, and entertainment venues.',
     image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-    color: 'bg-gradient-to-br from-blue-200 to-indigo-300',
+    color: 'bg-gradient-to-br from-sovereign-gold/40 to-sovereign-gold-dark/50',
     href: '/properties?type=apartment'
   },
   {
     title: 'Investment Advisory',
     description: 'Our data-driven investment strategies are meticulously tailored to your unique financial goals and risk profile. We combine deep market intelligence with decades of regional expertise to identify opportunities that deliver sustainable returns. From portfolio construction to exit planning, our advisory team guides you through every stage of your investment journey.',
     image: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&q=80',
-    color: 'bg-gradient-to-br from-orange-200 to-amber-300',
+    color: 'bg-gradient-to-br from-sovereign-gold/40 to-sovereign-gold-dark/50',
     href: '/calculator'
   },
   {
     title: 'Golden Visa',
     description: 'Navigate the UAE Golden Visa application process with confidence through our comprehensive guidance program. We handle every aspect of your residency journey, from property selection that meets visa requirements to document preparation and government liaisons. Our 98% success rate reflects our commitment to securing your family\'s future in the UAE.',
     image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80',
-    color: 'bg-gradient-to-br from-yellow-200 to-amber-300',
+    color: 'bg-gradient-to-br from-sovereign-gold/40 to-sovereign-gold-dark/50',
     href: '/intelligence/golden-visa-guide'
   },
   {
     title: 'Market Intelligence',
     description: 'Stay ahead of market movements with our exclusive reports and real-time analysis of Abu Dhabi\'s evolving real estate landscape. Our intelligence platform delivers actionable insights on pricing trends, emerging neighborhoods, regulatory changes, and macroeconomic factors that impact your investments. Knowledge is power—we ensure you have both.',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-    color: 'bg-gradient-to-br from-purple-200 to-violet-300',
+    color: 'bg-gradient-to-br from-sovereign-gold/40 to-sovereign-gold-dark/50',
     href: '/intelligence'
   },
 ]
@@ -74,8 +74,8 @@ export default function ServiceScroller() {
       return { display: 'none' }
     }
     
-    // G42-style positioning with smooth transitions
-    const translateX = offset * 280
+    // G42-style positioning with smooth transitions - tighter spacing
+    const translateX = offset * 220
     const translateY = Math.abs(offset) === 2 ? 50 : Math.abs(offset) === 1 ? 25 : 0
     const scale = offset === 0 ? 1 : Math.abs(offset) === 1 ? 0.85 : 0.7
     const opacity = offset === 0 ? 1 : Math.abs(offset) === 1 ? 0.8 : 0.5
@@ -137,7 +137,7 @@ export default function ServiceScroller() {
         </div>
         
         {/* Mobile Layout - Paddles under title */}
-        <div className="flex md:hidden flex-col items-center gap-4">
+        <div className="flex md:hidden flex-col items-center gap-6">
           <h2 className="text-3xl font-serif text-sovereign-charcoal uppercase tracking-wide text-center">
             The Sovereign Way
           </h2>
@@ -199,7 +199,7 @@ export default function ServiceScroller() {
       </div>
 
       {/* Active Item Description - Centered below */}
-      <div className="relative z-10 text-center mt-6 md:mt-8 max-w-3xl mx-auto px-6 transition-all duration-1000 ease-out">
+      <div className="relative z-10 text-center mt-10 md:mt-8 max-w-3xl mx-auto px-6 transition-all duration-1000 ease-out">
         <h3 className="text-lg md:text-xl font-serif text-sovereign-charcoal mb-2 uppercase tracking-wide">
           {services[activeIndex].title}
         </h3>
@@ -209,7 +209,7 @@ export default function ServiceScroller() {
       </div>
 
       {/* Progress Dots */}
-      <div className="relative z-10 flex justify-center gap-2 mt-4">
+      <div className="relative z-10 flex justify-center gap-2 mt-6 md:mt-4">
         {services.map((_, index) => (
           <button
             key={index}
