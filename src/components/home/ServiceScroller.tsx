@@ -185,7 +185,7 @@ export default function ServiceScroller() {
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover mix-blend-multiply opacity-60 group-hover:scale-110 transition-transform duration-700"
+                    className={`object-cover mix-blend-multiply group-hover:scale-110 transition-all duration-700 ${isCenter ? 'opacity-80' : 'opacity-50'}`}
                   />
                   
                   {/* Decorative dots */}

@@ -119,10 +119,10 @@ export default function Header() {
       {/* Smart Sticky Header Container */}
       <div className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled ? "bg-sovereign-green/95 backdrop-blur-xl shadow-2xl" : ""
+        (scrolled || !isHomePage) ? "bg-sovereign-green/95 backdrop-blur-xl shadow-2xl" : ""
       )}>
         {/* Darker gradient overlay for header area - better logo visibility */}
-        {!scrolled && (
+        {!scrolled && isHomePage && (
           <div className="absolute inset-0 h-40 bg-gradient-to-b from-sovereign-black/70 via-sovereign-green/50 to-transparent pointer-events-none" />
         )}
 
