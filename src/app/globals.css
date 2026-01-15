@@ -251,3 +251,13 @@
 .animate-search-glow {
   animation: searchGlow 2s ease-in-out infinite;
 }
+
+/* Subtle float animation for expert images */
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}

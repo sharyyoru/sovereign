@@ -6,6 +6,7 @@ import ServiceScroller from '@/components/home/ServiceScroller'
 import CaseStudies from '@/components/home/CaseStudies'
 import AnimatedHeroText from '@/components/home/AnimatedHeroText'
 import FeaturedYieldCarousel from '@/components/home/FeaturedYieldCarousel'
+import TalkToExperts from '@/components/home/TalkToExperts'
 
 export default function HomePage() {
   return (
@@ -260,8 +261,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Talk to the Experts */}
+      <TalkToExperts />
+
       {/* Consultation CTA */}
-      <section className="py-20 lg:py-32 bg-sovereign-black relative overflow-hidden">
+      <section className="py-20 lg:py-32 bg-sovereign-green relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-sovereign-gold/5 rounded-full blur-3xl" />
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
