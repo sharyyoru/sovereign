@@ -225,3 +225,29 @@
     transform: translateY(0);
   }
 }
+
+/* Search bar placeholder animation */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Search bar glow animation on focus */
+@keyframes searchGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+  }
+}
+
+.animate-search-glow {
+  animation: searchGlow 2s ease-in-out infinite;
+}
