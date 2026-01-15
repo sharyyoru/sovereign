@@ -5,6 +5,7 @@ import PropertySlider from '@/components/home/PropertySlider'
 import ServiceScroller from '@/components/home/ServiceScroller'
 import CaseStudies from '@/components/home/CaseStudies'
 import AnimatedHeroText from '@/components/home/AnimatedHeroText'
+import FeaturedYieldCarousel from '@/components/home/FeaturedYieldCarousel'
 
 export default function HomePage() {
   return (
@@ -254,12 +255,7 @@ export default function HomePage() {
                 Open Calculator
               </Link>
             </div>
-            <div className="relative aspect-square bg-sovereign-charcoal p-8 flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-sovereign-gold text-6xl font-serif mb-4">7.2%</p>
-                <p className="text-white/60 uppercase tracking-wider text-sm">Average Yield</p>
-              </div>
-            </div>
+            <FeaturedYieldCarousel />
           </div>
         </div>
       </section>
